@@ -38,7 +38,7 @@ export const campaigns: Record<string, Campaign> = {
     component: Reengagement,
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Re-engage existing users",
-    subject: "Rebyte has changed — come see what's new",
+    subject: "Skill-powered code agent running in the cloud",
   },
   "sms-welcome": {
     channel: "sms",

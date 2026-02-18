@@ -118,7 +118,7 @@ export async function POST(req: Request) {
           createElement(config.component, recipient)
         );
         return client.sendEmail({
-          From: from || "hello@rebyte.ai",
+          From: from || "founder@rebyte.ai",
           To: recipient.email,
           Subject: subject || "Hello from Rebyte",
           HtmlBody: html,

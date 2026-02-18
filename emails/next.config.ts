@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   transpilePackages: ["@react-email/components", "@react-email/render"],
-  serverExternalPackages: ["csv-parse"],
+  serverExternalPackages: ["csv-parse", "@libsql/client"],
   output: 'standalone',
   images: { unoptimized: true },
 };

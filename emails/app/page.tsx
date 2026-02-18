@@ -77,7 +77,7 @@ export default function Console() {
   const [sidebarView, setSidebarView] = useState<SidebarView>("campaign");
   const [tab, setTab] = useState<Tab>("preview");
   const [previewHtml, setPreviewHtml] = useState("");
-  const [fromAddress, setFromAddress] = useState("hello@rebyte.ai");
+  const [fromAddress, setFromAddress] = useState("founder@rebyte.ai");
   const [subject, setSubject] = useState("Hello from Rebyte");
   const [sendResult, setSendResult] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);

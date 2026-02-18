@@ -1,19 +1,13 @@
-import { createClient, type Client } from "@libsql/client/http";
+import { createClient, type Client } from "@libsql/client";
+import path from "path";
 
 let _db: Client | null = null;
 
 export function getDb(): Client {
   if (!_db) {
-    const url = process.env.TURSO_DATABASE_URL;
-    const authToken = process.env.TURSO_AUTH_TOKEN;
-
-    if (!url) {
-      throw new Error("TURSO_DATABASE_URL is not set");
-    }
-
+    const dbPath = path.join(process.cwd(), "data.db");
     _db = createClient({
-      url,
-      authToken,
+      url: `file:${dbPath}`,
     });
   }
   return _db;
