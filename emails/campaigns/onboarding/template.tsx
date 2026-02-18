@@ -1,7 +1,7 @@
-import { Section, Text, Hr, Row, Column, Img } from "@react-email/components";
+import { Section, Text, Hr } from "@react-email/components";
 import * as React from "react";
 import { Wrapper } from "../../components/wrapper";
-import { Header } from "../../components/header";
+import { Hero } from "../../components/hero";
 import { Footer } from "../../components/footer";
 import { Button } from "../../components/button";
 
@@ -15,7 +15,11 @@ export default function Onboarding({ name }: OnboardingProps) {
 
   return (
     <Wrapper preview="Pro tips to master Rebyte">
-      <Header />
+      <Hero
+        title="Master the Rebyte Workspace"
+        ctaText="Explore Skills"
+        ctaHref="https://rebyte.ai/skills"
+      />
       <Section style={section}>
         <Text style={heading}>Master the Rebyte Workspace</Text>
         <Text style={paragraph}>Hi {displayName},</Text>

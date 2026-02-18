@@ -1,6 +1,7 @@
-import { Section, Text, Hr, Img } from "@react-email/components";
+import { Section, Text, Hr } from "@react-email/components";
 import * as React from "react";
 import { Wrapper } from "../../components/wrapper";
+import { Hero } from "../../components/hero";
 import { Footer } from "../../components/footer";
 import { Button } from "../../components/button";
 
@@ -15,40 +16,11 @@ export default function Reengagement({ name }: ReengagementProps) {
 
   return (
     <Wrapper preview="Skill-powered code agent running in the cloud">
-      {/* Hero */}
-      <Section style={hero}>
-        <table role="presentation" cellPadding="0" cellSpacing="0" style={{ margin: "0 auto 16px" }}>
-          <tr>
-            <td style={{ verticalAlign: "middle" }}>
-              <span style={heroBrand}>Rebyte</span>
-            </td>
-            <td style={{ verticalAlign: "middle", paddingLeft: "8px" }}>
-              <Img
-                src="https://rebyte.ai/android-chrome-512x512.png"
-                width="22"
-                height="22"
-                alt="Rebyte"
-                style={{ borderRadius: "4px", display: "block" }}
-              />
-            </td>
-          </tr>
-        </table>
-        <Text style={heroTitle}>Skill-Powered Code Agents in the Cloud</Text>
-<table
-          role="presentation"
-          cellPadding="0"
-          cellSpacing="0"
-          style={{ margin: "0 auto" }}
-        >
-          <tr>
-            <td align="center">
-              <a href="https://rebyte.ai" style={heroCta}>
-                See what&apos;s new&nbsp;&nbsp;&rarr;
-              </a>
-            </td>
-          </tr>
-        </table>
-      </Section>
+      <Hero
+        title="Skill-Powered Code Agents in the Cloud"
+        ctaText="See what's new"
+        ctaHref="https://rebyte.ai"
+      />
 
       {/* Body */}
       <Section style={section}>
@@ -112,47 +84,6 @@ export default function Reengagement({ name }: ReengagementProps) {
   );
 }
 
-const hero: React.CSSProperties = {
-  background: "linear-gradient(180deg, #93DBFB 0%, #F5A962 100%)",
-  borderRadius: "12px",
-  padding: "52px 40px",
-  textAlign: "center" as const,
-};
-
-const heroBrand: React.CSSProperties = {
-  fontSize: "13px",
-  fontWeight: "600",
-  color: "#1a1a1a",
-  letterSpacing: "2px",
-  textTransform: "uppercase" as const,
-};
-
-const heroTitle: React.CSSProperties = {
-  fontSize: "32px",
-  fontWeight: "bold",
-  color: "#1a1a1a",
-  margin: "0 0 12px",
-  letterSpacing: "-0.5px",
-  lineHeight: "38px",
-};
-
-const heroSubtitle: React.CSSProperties = {
-  fontSize: "16px",
-  color: "#444",
-  margin: "0 0 28px",
-  lineHeight: "24px",
-};
-
-const heroCta: React.CSSProperties = {
-  display: "inline-block",
-  backgroundColor: "#ffffff",
-  color: "#1a1a1a",
-  fontSize: "15px",
-  fontWeight: "600",
-  textDecoration: "none",
-  borderRadius: "999px",
-  padding: "12px 28px",
-};
 
 const section: React.CSSProperties = {
   padding: "36px 40px",

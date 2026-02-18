@@ -1,7 +1,7 @@
 import { Section, Text, Hr } from "@react-email/components";
 import * as React from "react";
 import { Wrapper } from "../../components/wrapper";
-import { Header } from "../../components/header";
+import { Hero } from "../../components/hero";
 import { Footer } from "../../components/footer";
 import { Button } from "../../components/button";
 
@@ -15,7 +15,11 @@ export default function Welcome({ name }: WelcomeProps) {
 
   return (
     <Wrapper preview="Welcome to Rebyte">
-      <Header />
+      <Hero
+        title="Welcome to Rebyte"
+        ctaText="Go to Dashboard"
+        ctaHref="https://rebyte.ai/dashboard"
+      />
       <Section style={section}>
         <Text style={heading}>Welcome to Rebyte</Text>
         <Text style={paragraph}>Hi {displayName},</Text>
