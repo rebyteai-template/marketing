@@ -1,6 +1,7 @@
 import Welcome from "./welcome/template";
 import Reengagement from "./reengagement/template";
 import Onboarding from "./onboarding/template";
+import ProductUpdate202603 from "./product-update-2026-03/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -39,6 +40,13 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Re-engage existing users",
     subject: "Skill-powered code agent running in the cloud",
+  },
+  "product-update-2026-03": {
+    channel: "email",
+    component: ProductUpdate202603,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly product update — 4 agents, 2s boot, Anthropic professional skills",
+    subject: "Weekly Update: 4 agents, 2-second boot, professional skills",
   },
   "sms-welcome": {
     channel: "sms",

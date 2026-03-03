@@ -26,8 +26,9 @@ export async function POST(
 
   const users = await fetchClerkUsersForPreset(group.preset as string);
 
+  // Additive sync: INSERT OR IGNORE preserves seeded members and adds new
+  // Clerk users without duplicates (unique constraint on group_id + email)
   const batch: any[] = [
-    { sql: "DELETE FROM members WHERE group_id = ?", args: [id] },
     ...users.map((u) => ({
       sql: "INSERT OR IGNORE INTO members (group_id, email, name) VALUES (?, ?, ?)",
       args: [id, u.email, u.name],

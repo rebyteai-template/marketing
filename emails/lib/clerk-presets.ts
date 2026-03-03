@@ -17,6 +17,17 @@ interface ClerkUser {
 
 const now = () => Date.now();
 
+/** Normalize Gmail dot-aliases and +tags so duplicates are caught */
+export function normalizeEmail(email: string): string {
+  email = email.toLowerCase().trim();
+  const [local, domain] = email.split("@");
+  if (domain === "gmail.com" || domain === "googlemail.com") {
+    const cleaned = local.split("+")[0].replace(/\./g, "");
+    return `${cleaned}@gmail.com`;
+  }
+  return email;
+}
+
 export const PRESETS: ClerkPreset[] = [
   {
     id: "registered_last_7_days",
@@ -55,6 +66,7 @@ export async function fetchClerkUsersForPreset(
   if (!apiKey) throw new Error("CLERK_SECRET_KEY not set");
 
   const results: { email: string; name: string }[] = [];
+  const seen = new Set<string>();
   let offset = 0;
   const limit = 100;
 
@@ -75,12 +87,16 @@ export async function fetchClerkUsersForPreset(
     let matchesInPage = 0;
     for (const user of users) {
       if (preset.filter(user)) {
-        const email = user.email_addresses?.[0]?.email_address;
-        if (email) {
-          const name = [user.first_name, user.last_name]
-            .filter(Boolean)
-            .join(" ");
-          results.push({ email, name });
+        const rawEmail = user.email_addresses?.[0]?.email_address;
+        if (rawEmail) {
+          const email = normalizeEmail(rawEmail);
+          if (!seen.has(email)) {
+            seen.add(email);
+            const name = [user.first_name, user.last_name]
+              .filter(Boolean)
+              .join(" ");
+            results.push({ email, name });
+          }
           matchesInPage++;
         }
       }
