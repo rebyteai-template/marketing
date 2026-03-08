@@ -2,6 +2,7 @@ import Welcome from "./welcome/template";
 import Reengagement from "./reengagement/template";
 import Onboarding from "./onboarding/template";
 import ProductUpdate202603 from "./product-update-2026-03/template";
+import ProductUpdate20260308 from "./product-update-2026-03-08/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -47,6 +48,13 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Weekly product update — 4 agents, 2s boot, Anthropic professional skills",
     subject: "Weekly Update: 4 agents, 2-second boot, professional skills",
+  },
+  "product-update-2026-03-08": {
+    channel: "email",
+    component: ProductUpdate20260308,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — Go Mobile + Why Every Agent Needs a Box blog",
+    subject: "Weekly Update: Rebyte goes mobile + why every agent needs a box",
   },
   "sms-welcome": {
     channel: "sms",
