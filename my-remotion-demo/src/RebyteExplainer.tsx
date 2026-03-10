@@ -116,7 +116,7 @@ const IntroScene = () => {
             opacity: titleOpacity,
           }}
         >
-          Your AI Team
+          Your AI Agent Team on Cloud
         </div>
       </AbsoluteFill>
 
@@ -428,7 +428,7 @@ const OutroScene = () => {
           marginBottom: 16,
         }}
       >
-        Your AI team, running in the cloud.
+        Your AI agent team on cloud.
       </div>
 
       <div
@@ -450,7 +450,7 @@ export const RebyteExplainer = () => {
   return (
     <AbsoluteFill style={{ background: BRAND.bg }}>
       {/* Background Music */}
-      <Audio src={staticFile("audio/bg.mp3")} volume={0.04} />
+      <Audio src={staticFile("audio/bg.mp3")} volume={0.015} />
 
       {/* Part 1: Intro */}
       <Sequence from={0} durationInFrames={PART1}>
