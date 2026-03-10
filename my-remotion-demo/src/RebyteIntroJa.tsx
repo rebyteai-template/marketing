@@ -292,23 +292,23 @@ const SoftwareLogoItem = ({
 };
 
 // ============ MAIN COMPONENT ============
-export const RebyteIntro = () => {
+export const RebyteIntroJa = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  // Scene timings based on actual audio durations (at 30fps)
-  // Total: ~110 seconds
+  // Scene timings based on actual Japanese audio durations (at 30fps)
+  // Total: ~162.5 seconds
   const sections = {
-    intro:        { start: 0,    duration: 294 },   // 9.8s - "Previously, only programmers..."
-    change:       { start: 294,  duration: 201 },   // 6.7s - "Everything changed with code agents..."
-    rebyte:       { start: 495,  duration: 437 },   // 14.6s - "Rebyte was born to bridge the gap..."
-    surveyIntro:  { start: 932,  duration: 200 },   // 6.7s - "Let me show you..."
-    oldWay:       { start: 1132, duration: 219 },   // 7.3s - "The old way?..."
-    newWay:       { start: 1351, duration: 764 },   // 25.5s - "The new way?..."
-    spreadsheet:  { start: 2115, duration: 503 },   // 16.75s - "Say you need a spreadsheet..."
-    coding:       { start: 2618, duration: 516 },   // 17.2s - "Back to coding..."
-    outro:        { start: 3134, duration: 214 },   // 7.1s - "These are just the beginning..."
-    tagline:      { start: 3348, duration: 87 },    // 2.9s - "Rebyte. Vibe working..."
+    intro:        { start: 0,    duration: 415 },   // 13.8s
+    change:       { start: 415,  duration: 293 },   // 9.8s
+    rebyte:       { start: 708,  duration: 536 },   // 17.9s
+    surveyIntro:  { start: 1244, duration: 291 },   // 9.7s
+    oldWay:       { start: 1535, duration: 423 },   // 14.1s
+    newWay:       { start: 1958, duration: 946 },   // 31.5s
+    spreadsheet:  { start: 2904, duration: 766 },   // 25.6s
+    coding:       { start: 3670, duration: 810 },   // 27.0s
+    outro:        { start: 4480, duration: 249 },   // 8.3s
+    tagline:      { start: 4729, duration: 144 },   // 4.8s
   };
 
   return (
@@ -316,18 +316,18 @@ export const RebyteIntro = () => {
       {/* Background music bed */}
       <Audio src={staticFile("audio/bg.mp3")} volume={0.06} />
       {/* Per-section audio files */}
-      <Sequence from={sections.intro.start}><Audio src={staticFile("sections/01-intro/audio.mp3")} /></Sequence>
-      <Sequence from={sections.change.start}><Audio src={staticFile("sections/02-change/audio.mp3")} /></Sequence>
-      <Sequence from={sections.rebyte.start}><Audio src={staticFile("sections/03-rebyte/audio.mp3")} /></Sequence>
-      <Sequence from={sections.surveyIntro.start}><Audio src={staticFile("sections/04-survey-intro/audio.mp3")} /></Sequence>
-      <Sequence from={sections.oldWay.start}><Audio src={staticFile("sections/05-old-way/audio.mp3")} /></Sequence>
-      <Sequence from={sections.newWay.start}><Audio src={staticFile("sections/06-new-way/audio.mp3")} /></Sequence>
-      <Sequence from={sections.spreadsheet.start}><Audio src={staticFile("sections/07-spreadsheet/audio.mp3")} /></Sequence>
-      <Sequence from={sections.coding.start}><Audio src={staticFile("sections/08-coding/audio.mp3")} /></Sequence>
-      <Sequence from={sections.outro.start}><Audio src={staticFile("sections/09-outro/audio.mp3")} /></Sequence>
-      <Sequence from={sections.tagline.start}><Audio src={staticFile("sections/10-tagline/audio.mp3")} /></Sequence>
+      <Sequence from={sections.intro.start}><Audio src={staticFile("sections-ja/01-intro/audio.mp3")} /></Sequence>
+      <Sequence from={sections.change.start}><Audio src={staticFile("sections-ja/02-change/audio.mp3")} /></Sequence>
+      <Sequence from={sections.rebyte.start}><Audio src={staticFile("sections-ja/03-rebyte/audio.mp3")} /></Sequence>
+      <Sequence from={sections.surveyIntro.start}><Audio src={staticFile("sections-ja/04-survey-intro/audio.mp3")} /></Sequence>
+      <Sequence from={sections.oldWay.start}><Audio src={staticFile("sections-ja/05-old-way/audio.mp3")} /></Sequence>
+      <Sequence from={sections.newWay.start}><Audio src={staticFile("sections-ja/06-new-way/audio.mp3")} /></Sequence>
+      <Sequence from={sections.spreadsheet.start}><Audio src={staticFile("sections-ja/07-spreadsheet/audio.mp3")} /></Sequence>
+      <Sequence from={sections.coding.start}><Audio src={staticFile("sections-ja/08-coding/audio.mp3")} /></Sequence>
+      <Sequence from={sections.outro.start}><Audio src={staticFile("sections-ja/09-outro/audio.mp3")} /></Sequence>
+      <Sequence from={sections.tagline.start}><Audio src={staticFile("sections-ja/10-tagline/audio.mp3")} /></Sequence>
 
-      {/* Scene 1: The Problem */}
+      {/* Scene 1: 問題点 */}
       <Sequence from={sections.intro.start} durationInFrames={sections.intro.duration}>
         <ProblemScene frame={frame - sections.intro.start} fps={fps} sceneDuration={sections.intro.duration} />
       </Sequence>
@@ -438,7 +438,7 @@ const ProblemScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
           maxWidth: s(800),
           lineHeight: 1.4,
         }}>
-          Previously, only <span style={{ color: "#1f2937" }}>programmers</span> could code.
+          以前は、<span style={{ color: "#1f2937" }}>プログラマー</span>だけがコードを書けました。
         </h1>
         <p style={{
           fontFamily: "system-ui",
@@ -449,7 +449,7 @@ const ProblemScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
           maxWidth: s(600),
           opacity: interpolate(frame, [fps * 0.8, fps * 1.3], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
         }}>
-          Everyone else had to use predefined software<br />or ask a programmer friend for help.
+          それ以外の人は既製のソフトウェアを使うか、<br />プログラマーに助けを求めるしかありませんでした。
         </p>
       </div>
     </AbsoluteFill>
@@ -497,7 +497,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
           opacity: interpolate(entrance, [0, 1], [0, 1]),
           transform: `translateY(${interpolate(entrance, [0, 1], [s(20), 0])}px)`,
         }}>
-          Everything changed with <span style={{ color: "#374151" }}>Code Agents</span>
+          <span style={{ color: "#374151" }}>コードエージェント</span>がすべてを変えた
         </h1>
 
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: s(28), marginTop: s(20), maxWidth: s(850) }}>
@@ -532,7 +532,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
           textAlign: "center",
           opacity: interpolate(frame, [fps * 3, fps * 3.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
         }}>
-          Initially for programmers—but actually for <span style={{ color: "#374151", fontWeight: 600 }}>everyone</span>
+          最初はプログラマー向け—でも実は<span style={{ color: "#374151", fontWeight: 600 }}>みんな</span>のために
         </p>
       </div>
     </AbsoluteFill>
@@ -558,14 +558,14 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
 
   // Skills to show
   const skills = [
-    "Create spreadsheets",
-    "Create presentation",
-    "Create a video",
-    "Create forms",
-    "Deep research",
-    "Data analysis",
-    "Financial analysis",
-    "Image generation Pro",
+    "スプレッドシート作成",
+    "プレゼンテーション作成",
+    "動画作成",
+    "フォーム作成",
+    "ディープリサーチ",
+    "データ分析",
+    "財務分析",
+    "画像生成 Pro",
   ];
 
   // Code agents
@@ -598,7 +598,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
           color: "#1f2937",
           margin: 0,
         }}>
-          Born to bridge the gap
+          ギャップを埋めるために生まれた
         </h1>
       </div>
 
@@ -633,7 +633,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
             textTransform: "uppercase",
             letterSpacing: s(1),
           }}>
-            State-of-the-art Agents
+            最先端のエージェント
           </span>
           <div style={{ display: "flex", gap: s(12) }}>
             {agents.map(({ Logo, name, color }, i) => {
@@ -707,7 +707,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
             color: "#374151",
             fontWeight: 600,
           }}>
-            Agent Runtime
+            エージェントランタイム
           </span>
         </div>
 
@@ -727,7 +727,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
             textTransform: "uppercase",
             letterSpacing: s(1),
           }}>
-            Specialized Skills
+            専門スキル
           </span>
           <div style={{ display: "flex", flexWrap: "wrap", gap: s(10), justifyContent: "center", maxWidth: s(360) }}>
             {skills.map((skill, i) => {
@@ -769,7 +769,7 @@ const ChangeScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
           fontWeight: 500,
           margin: 0,
         }}>
-          Code agents become <span style={{ color: "#374151", fontWeight: 700 }}>generic problem solvers</span> for every task
+          コードエージェントがあらゆるタスクの<span style={{ color: "#374151", fontWeight: 700 }}>汎用問題解決ツール</span>になる
         </p>
       </div>
     </AbsoluteFill>
@@ -812,7 +812,7 @@ const MissionScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
           color: "#1f2937",
           margin: 0,
         }}>
-          Rebyte bridges the gap
+          Rebyteがギャップを埋める
         </h1>
         <p style={{
           fontFamily: "system-ui",
@@ -820,7 +820,7 @@ const MissionScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
           color: "#6b7280",
           marginTop: 10,
         }}>
-          Running SOTA code agents on the cloud for everyone
+          最先端のコードエージェントをクラウドでみんなに
         </p>
       </div>
 
@@ -1004,7 +1004,7 @@ const MissionScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
           color: "#374151",
           fontWeight: 600,
         }}>
-          Each agent runs in its own isolated cloud environment
+          各エージェントが独立したクラウド環境で実行
         </span>
       </div>
     </AbsoluteFill>
@@ -1111,7 +1111,7 @@ const SurveyIntroScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
           border: "1px solid #a7f3d0",
         }}>
           <span style={{ fontFamily: "system-ui", fontSize: s(14), color: "#059669", fontWeight: 600 }}>
-            Let me show you
+            お見せしましょう
           </span>
         </div>
         <h1 style={{
@@ -1124,8 +1124,8 @@ const SurveyIntroScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
           maxWidth: s(900),
           lineHeight: 1.3,
         }}>
-          Say your marketing team needs<br />
-          <span style={{ color: "#374151" }}>a survey form</span>
+          マーケティングチームに<br />
+          <span style={{ color: "#374151" }}>アンケートフォーム</span>が必要になったら
         </h1>
         <p style={{
           fontFamily: "system-ui",
@@ -1135,7 +1135,7 @@ const SurveyIntroScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
           textAlign: "center",
           opacity: interpolate(frame, [fps * 1.5, fps * 2], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
         }}>
-          How would you typically do this?
+          普通はどうしますか？
         </p>
       </div>
     </AbsoluteFill>
@@ -1172,7 +1172,7 @@ const SurveyOldWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
           textTransform: "uppercase",
           letterSpacing: s(2),
         }}>
-          The Old Way
+          従来の方法
         </span>
       </div>
 
@@ -1211,7 +1211,7 @@ const SurveyOldWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
             <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
           </svg>
           <span style={{ fontFamily: "system-ui", fontSize: s(16), color: "#202124" }}>
-            {"best survey builder tool".slice(0, Math.floor(interpolate(frame, [fps * 1, fps * 2.5], [0, 25], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })))}
+            {"アンケート作成ツール おすすめ".slice(0, Math.floor(interpolate(frame, [fps * 1, fps * 2.5], [0, 25], { extrapolateLeft: "clamp", extrapolateRight: "clamp" })))}
             <span style={{ opacity: Math.sin(frame / 4) > 0 ? 1 : 0, color: "#202124" }}>|</span>
           </span>
         </div>
@@ -1284,7 +1284,7 @@ const SurveyOldWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
           fontSize: s(20),
           color: "#6b7280",
         }}>
-          Sign up, learn the tool, pay monthly fees...
+          登録して、ツールを学んで、月額料金を支払う...
         </p>
       </div>
     </AbsoluteFill>
@@ -1310,10 +1310,10 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
   const exitOpacity = interpolate(frame, [sceneDuration - fps * 0.5, sceneDuration], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
   const agentActions = [
-    { text: "Researching best form practices...", icon: "🔍" },
-    { text: "Building form structure...", icon: "⚙️" },
-    { text: "Deploying to cloud...", icon: "☁️" },
-    { text: "Form is live!", icon: "✅" },
+    { text: "最適なフォームの作り方をリサーチ中...", icon: "🔍" },
+    { text: "フォーム構造を構築中...", icon: "⚙️" },
+    { text: "クラウドにデプロイ中...", icon: "☁️" },
+    { text: "フォームが公開されました！", icon: "✅" },
   ];
 
   const formSteps = [
@@ -1338,7 +1338,7 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
               color: "#1f2937",
               textAlign: "center",
             }}>
-              The <span style={{ color: "#374151" }}>new</span> way?
+              <span style={{ color: "#374151" }}>新しい</span>方法は？
             </h1>
           </div>
         </AbsoluteFill>
@@ -1374,7 +1374,7 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
             opacity: interpolate(frame, [phases.combineSkill.start + fps * 0.3, phases.combineSkill.start + fps * 0.6], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           }}>
             <span style={{ fontFamily: "system-ui", fontSize: s(14), fontWeight: 600, color: "#1f2937" }}>
-              Combine Agent + Skill
+              エージェント + スキルを組み合わせる
             </span>
           </div>
         </AbsoluteFill>
@@ -1405,7 +1405,7 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
             boxShadow: `0 ${s(4)}px ${s(12)}px rgba(0,0,0,0.1)`,
           }}>
             <span style={{ fontFamily: "system-ui", fontSize: s(14), fontWeight: 600, color: "#1f2937" }}>
-              Tell the agent what you want
+              エージェントに要望を伝える
             </span>
           </div>
           <div style={{
@@ -1420,7 +1420,7 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
             boxShadow: `0 ${s(8)}px ${s(24)}px rgba(0,0,0,0.12)`,
           }}>
             <span style={{ fontFamily: "system-ui", fontSize: s(16), color: "#374151" }}>
-              Describe what you need in plain English...
+              必要なものを自然言語で説明...
             </span>
           </div>
         </AbsoluteFill>
@@ -1454,7 +1454,7 @@ const SurveyNewWayScene = ({ frame, fps, sceneDuration }: { frame: number; fps: 
           }}>
             <div style={{ fontFamily: "system-ui", fontSize: s(16), color: "#1f2937", marginBottom: s(16), fontWeight: 600, display: "flex", alignItems: "center", gap: s(8) }}>
               <span>⚙️</span>
-              Agent Working...
+              エージェントが作業中...
             </div>
             {agentActions.map((action, i) => {
               const actionStart = phases.agentWorking.start + i * fps * 1;
@@ -1587,7 +1587,7 @@ const SpreadsheetScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
             opacity: interpolate(frame, [fps * 0.5, fps * 1], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           }}>
             <span style={{ fontFamily: "system-ui", fontSize: s(14), fontWeight: 600, color: "#1f2937" }}>
-              {frame < phases.agentWorking.start ? "📝 User Request" : "⚙️ Agent Working..."}
+              {frame < phases.agentWorking.start ? "📝 User Request" : "⚙️ エージェントが作業中..."}
             </span>
           </div>
         </AbsoluteFill>
@@ -1616,7 +1616,7 @@ const SpreadsheetScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
             }}>
               <span style={{ fontSize: s(20) }}>✅</span>
               <span style={{ fontFamily: "system-ui", fontSize: s(18), fontWeight: 600, color: "#059669" }}>
-                Done in seconds!
+                数秒で完成！
               </span>
             </div>
             {/* Full spreadsheet screenshot */}
@@ -1649,10 +1649,10 @@ const SpreadsheetScene = ({ frame, fps, sceneDuration }: { frame: number; fps: n
 const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number; sceneDuration: number }) => {
   const { s } = useScale();
   // Two-part narrative: ~17.2 seconds total
-  // Part 1 (0-9s): The Problem - Local machine limitations
+  // Part 1 (0-9s): 問題点 - Local machine limitations
   // Part 2 (9-17s): The Solution - Cloud isolation
   const phases = {
-    // Part 1: The Problem
+    // Part 1: 問題点
     intro: { start: 0, end: fps * 2 },                      // 0-2s: "Back to coding"
     localSetup: { start: fps * 2, end: fps * 5 },           // 2-5s: Show local machine with agents
     conflicts: { start: fps * 5, end: fps * 9 },            // 5-9s: Show conflicts/errors
@@ -1682,22 +1682,22 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
     {
       name: "VM 1",
       skill: "Security Review",
-      command: "Analyzing codebase...",
-      status: "3 vulnerabilities found & fixed",
+      command: "コードベースを分析中...",
+      status: "3件の脆弱性を発見・修正",
       icon: "🔒",
     },
     {
       name: "VM 2",
       skill: "Next.js Builder",
-      command: "Building application...",
-      status: "Build complete ✓",
+      command: "アプリケーションをビルド中...",
+      status: "ビルド完了 ✓",
       icon: "⚡",
     },
     {
       name: "VM 3",
       skill: "Unit Testing",
-      command: "Running test suite...",
-      status: "47/47 tests pass ✓",
+      command: "テストスイートを実行中...",
+      status: "47/47 テスト合格 ✓",
       icon: "🧪",
     },
   ];
@@ -1731,7 +1731,7 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
               textAlign: "center",
               margin: 0,
             }}>
-              Back to coding
+              コーディングに戻ろう
             </h1>
           </div>
         </AbsoluteFill>
@@ -1747,10 +1747,10 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
             opacity: interpolate(frame, [phases.localSetup.start, phases.localSetup.start + fps * 0.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           }}>
             <h2 style={{ fontFamily: "system-ui", fontSize: s(32), fontWeight: 700, color: "#1f2937", margin: 0 }}>
-              On your local machine...
+              ローカルマシンでは...
             </h2>
             <p style={{ fontFamily: "system-ui", fontSize: s(18), color: "#6b7280", marginTop: s(8) }}>
-              Running multiple agents on the same repo
+              同じリポジトリで複数のエージェントを実行
             </p>
           </div>
 
@@ -1829,12 +1829,12 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
                   border: "2px solid #fecaca",
                 }}>
                   <h3 style={{ fontFamily: "system-ui", fontSize: s(18), fontWeight: 700, color: "#991b1b", margin: `0 0 ${s(16)}px 0` }}>
-                    The Problem
+                    問題点
                   </h3>
                   <div style={{ fontFamily: "system-ui", fontSize: s(14), color: "#7f1d1d", lineHeight: 1.6 }}>
-                    <p style={{ margin: `0 0 ${s(12)}px 0` }}>• Same port conflicts</p>
-                    <p style={{ margin: `0 0 ${s(12)}px 0` }}>• Test runner locks</p>
-                    <p style={{ margin: 0 }}>• Resource contention</p>
+                    <p style={{ margin: `0 0 ${s(12)}px 0` }}>• ポート競合</p>
+                    <p style={{ margin: `0 0 ${s(12)}px 0` }}>• テストランナーのロック</p>
+                    <p style={{ margin: 0 }}>• リソース競合</p>
                   </div>
                 </div>
               </div>
@@ -1855,10 +1855,10 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
             opacity: interpolate(frame, [phases.transition.start, phases.transition.start + fps * 0.5], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
           }}>
             <h2 style={{ fontFamily: "system-ui", fontSize: s(32), fontWeight: 700, color: "#1f2937", margin: 0 }}>
-              The new way? <span style={{ color: "#0ea5e9" }}>Cloud isolation</span>
+              新しい方法？ <span style={{ color: "#0ea5e9" }}>クラウド分離</span>
             </h2>
             <p style={{ fontFamily: "system-ui", fontSize: s(18), color: "#6b7280", marginTop: s(8) }}>
-              Each task runs in complete isolation — <span style={{ color: "#0ea5e9", fontWeight: 600 }}>Code Agent + Skill</span>
+              各タスクが完全に分離された環境で実行 — <span style={{ color: "#0ea5e9", fontWeight: 600 }}>コードエージェント + スキル</span>
             </p>
           </div>
 
@@ -1912,7 +1912,7 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
                       <span style={{ fontSize: s(20) }}>{vm.icon}</span>
                       <div>
                         <div style={{ fontFamily: "system-ui", fontSize: s(11), color: "#0369a1", fontWeight: 500 }}>
-                          Code Agent + Skill
+                          コードエージェント + スキル
                         </div>
                         <div style={{ fontFamily: "system-ui", fontSize: s(14), fontWeight: 600, color: "#0c4a6e" }}>
                           {vm.skill}
@@ -1963,7 +1963,7 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
               marginBottom: s(16),
             }}>
               <span style={{ fontFamily: "system-ui", fontSize: s(14), color: "#6b7280" }}>
-                Available coding skills:
+                利用可能なコーディングスキル:
               </span>
             </div>
             <div style={{ display: "flex", justifyContent: "center", gap: s(12), flexWrap: "wrap" }}>
@@ -1998,33 +1998,33 @@ const CodingScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number
 };
 
 // ============ SCENE 9: OUTRO (100-112s) ============
-// Script: "See what's possible. Real results from real users. Rebyte. Vibe working with skilled code agents."
+// Script: "See what's possible. Real results from real users. Rebyte. スキルを持ったコードエージェントとバイブワーキング."
 const OutroScene = ({ frame, fps }: { frame: number; fps: number }) => {
   const { s } = useScale();
   // All capability chips from the Rebyte platform
   const capabilities = [
     // Row 1
-    { icon: "📊", label: "Create spreadsheets" },
-    { icon: "📽️", label: "Create presentation" },
-    { icon: "🎬", label: "Create a video" },
-    { icon: "📝", label: "Create forms" },
+    { icon: "📊", label: "スプレッドシート作成" },
+    { icon: "📽️", label: "プレゼンテーション作成" },
+    { icon: "🎬", label: "動画作成" },
+    { icon: "📝", label: "フォーム作成" },
     // Row 2
-    { icon: "🔍", label: "Deep research" },
-    { icon: "📈", label: "Data analysis" },
-    { icon: "📉", label: "Financial analysis" },
-    { icon: "🖼️", label: "Image generation", isPro: true },
+    { icon: "🔍", label: "ディープリサーチ" },
+    { icon: "📈", label: "データ分析" },
+    { icon: "📉", label: "財務分析" },
+    { icon: "🖼️", label: "画像生成", isPro: true },
     // Row 3
-    { icon: "🗄️", label: "Data collection" },
-    { icon: "📄", label: "Document processing" },
+    { icon: "🗄️", label: "データ収集" },
+    { icon: "📄", label: "ドキュメント処理" },
     // Row 4
-    { icon: "🚀", label: "Create web app" },
-    { icon: "🤖", label: "Create AI agent" },
-    { icon: "⚙️", label: "Create with backend" },
-    { icon: "🧩", label: "Chrome extension" },
+    { icon: "🚀", label: "ウェブアプリ作成" },
+    { icon: "🤖", label: "AIエージェント作成" },
+    { icon: "⚙️", label: "バックエンド付き作成" },
+    { icon: "🧩", label: "Chrome拡張機能" },
     // Row 5
-    { icon: "▲", label: "Create app on Vercel" },
-    { icon: "🔀", label: "Code review" },
-    { icon: "🎨", label: "UI/UX design", isPro: true },
+    { icon: "▲", label: "Vercelでアプリ作成" },
+    { icon: "🔀", label: "コードレビュー" },
+    { icon: "🎨", label: "UI/UXデザイン", isPro: true },
   ];
 
   // Chip component
@@ -2085,7 +2085,7 @@ const OutroScene = ({ frame, fps }: { frame: number; fps: number }) => {
           color: "#1f2937",
           margin: 0,
         }}>
-          See what's <span style={{ color: "#0ea5e9" }}>possible</span>
+          どんなことが<span style={{ color: "#0ea5e9" }}>可能</span>か見てみよう
         </h1>
         <p style={{
           fontFamily: "system-ui",
@@ -2093,7 +2093,7 @@ const OutroScene = ({ frame, fps }: { frame: number; fps: number }) => {
           color: "#6b7280",
           marginTop: s(10),
         }}>
-          Unleash your imagination with Rebyte
+          Rebyteで想像力を解き放とう
         </p>
       </div>
 
@@ -2153,7 +2153,7 @@ const OutroScene = ({ frame, fps }: { frame: number; fps: number }) => {
           color: "#0ea5e9",
           margin: 0,
         }}>
-          Unleash the full potential of code agents
+          コードエージェントの可能性を最大限に引き出そう
         </p>
       </div>
     </AbsoluteFill>
@@ -2184,7 +2184,7 @@ const CTAScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number; s
           margin: 0,
           opacity: taglineOpacity,
         }}>
-          Vibe working with skilled code agents
+          スキルを持ったコードエージェントとバイブワーキング
         </p>
       </div>
     </AbsoluteFill>
@@ -2192,7 +2192,7 @@ const CTAScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number; s
 };
 
 // ============ SCENE 10: TAGLINE ============
-// Script: "Rebyte. Vibe working with skilled code agents."
+// Script: "Rebyte. スキルを持ったコードエージェントとバイブワーキング."
 const TaglineScene = ({ frame, fps, sceneDuration }: { frame: number; fps: number; sceneDuration: number }) => {
   const { s } = useScale();
   const logoScale = spring({ frame, fps, config: { damping: 12, stiffness: 100 } });
@@ -2230,7 +2230,7 @@ const TaglineScene = ({ frame, fps, sceneDuration }: { frame: number; fps: numbe
         margin: 0,
         opacity: textOpacity,
       }}>
-        Vibe working with skilled code agents
+        スキルを持ったコードエージェントとバイブワーキング
       </p>
     </AbsoluteFill>
   );
