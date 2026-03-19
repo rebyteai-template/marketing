@@ -43,6 +43,30 @@ export function Footer() {
           </table>
         </Column>
       </Row>
+      <Row style={appRow}>
+        <Column style={appBadgeCol}>
+          <Link href="https://testflight.apple.com/join/7PKet7nB">
+            <Img
+              src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83"
+              width="120"
+              height="40"
+              alt="Download on the App Store"
+              style={badgeImg}
+            />
+          </Link>
+        </Column>
+        <Column style={appBadgeCol}>
+          <Link href="https://play.google.com/store/apps/details?id=ai.rebyte">
+            <Img
+              src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              width="135"
+              height="40"
+              alt="Get it on Google Play"
+              style={badgeImg}
+            />
+          </Link>
+        </Column>
+      </Row>
       <Text style={footerText}>
         You're receiving this because you signed up for Rebyte.
         <br />
@@ -88,6 +112,21 @@ const footerText: React.CSSProperties = {
   lineHeight: "18px",
   textAlign: "center" as const,
   margin: "4px 0",
+};
+
+const appRow: React.CSSProperties = {
+  marginBottom: "20px",
+  textAlign: "center" as const,
+};
+
+const appBadgeCol: React.CSSProperties = {
+  textAlign: "center" as const,
+  paddingLeft: "6px",
+  paddingRight: "6px",
+};
+
+const badgeImg: React.CSSProperties = {
+  display: "inline-block",
 };
 
 const link: React.CSSProperties = {
