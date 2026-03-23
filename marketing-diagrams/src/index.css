@@ -9,3 +9,30 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@media print {
+  body { margin: 0; padding: 0; background: white; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .print-slide {
+    width: 1280px;
+    height: 720px;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+  }
+
+  .print-slide:last-child {
+    page-break-after: avoid;
+  }
+
+  @page {
+    size: 1280px 720px;
+    margin: 0;
+  }
+}

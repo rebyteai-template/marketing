@@ -1,11 +1,7 @@
-import { OpenAIFrontierDiagram } from './diagrams/OpenAIFrontier'
+import { RebyteDeck } from './slides/RebyteDeck'
 
 function App() {
-  return (
-    <div style={{ minHeight: '100vh', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40 }}>
-      <OpenAIFrontierDiagram />
-    </div>
-  )
+  return <RebyteDeck />
 }
 
 export default App

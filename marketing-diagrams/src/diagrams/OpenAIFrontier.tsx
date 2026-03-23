@@ -171,16 +171,6 @@ function Bracket({ height }: { height: number }) {
   )
 }
 
-function BracketRight({ height }: { height: number }) {
-  return (
-    <svg width="20" height={height} viewBox={`0 0 20 ${height}`} fill="none">
-      <line x1="0" y1="0" x2="10" y2="0" stroke={colors.textLight} strokeWidth="1.5" />
-      <line x1="10" y1="0" x2="10" y2={height} stroke={colors.textLight} strokeWidth="1.5" />
-      <line x1="0" y1={height} x2="10" y2={height} stroke={colors.textLight} strokeWidth="1.5" />
-      <line x1="10" y1={height / 2} x2="20" y2={height / 2} stroke={colors.textLight} strokeWidth="1.5" />
-    </svg>
-  )
-}
 
 export function OpenAIFrontierDiagram() {
   const contentLeft = 150
@@ -201,101 +191,118 @@ export function OpenAIFrontierDiagram() {
           <div style={styles.cardsRow}>
             <div style={styles.card(colors.cardOrange)}>Rebyte Web</div>
             <div style={styles.card(colors.cardOrange)}>Rebyte Mobile</div>
-            <div style={styles.card(colors.cardOrange)}>Other Business Applications</div>
+            <div style={{
+              ...styles.card(colors.cardOrange),
+              position: 'relative',
+            }}>
+              Other Business Applications
+              {/* Arrow down to Agent API */}
+              <div style={{ position: 'absolute', bottom: -38, left: '50%', transform: 'translateX(-50%)' }}>
+                <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
+                  <path d="M12 0 L12 24" stroke={colors.textLight} strokeWidth="1.5" />
+                  <path d="M7 20 L12 28 L17 20" stroke={colors.textLight} strokeWidth="1.5" fill="none" />
+                </svg>
+              </div>
+            </div>
           </div>
           <div style={styles.arrow}><ArrowLeft /></div>
         </div>
 
-        {/* Agents row */}
+        {/* Agent API bar */}
+        <div style={{ ...styles.rowContainer, marginBottom: 8 }}>
+          <div style={{ width: 120, flexShrink: 0 }} />
+          <div style={{ width: 30, flexShrink: 0 }} />
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
+            <div style={{
+              padding: '10px 32px',
+              borderRadius: 8,
+              border: `2px solid ${colors.cardOrange}`,
+              color: colors.cardOrange,
+              fontSize: 15,
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              textAlign: 'center' as const,
+            }}>
+              Agent API
+            </div>
+          </div>
+          <div style={{ width: 30, flexShrink: 0 }} />
+        </div>
+
+        {/* Skills row */}
         <div style={styles.rowContainer}>
-          <div style={styles.rowLabel}>Agents / Skills</div>
+          <div style={styles.rowLabel}>Skills / MCP</div>
           <div style={styles.arrow}><ArrowRight /></div>
           <div style={styles.cardsRow}>
-            <div style={styles.card(colors.cardPeach)}>Company Agents / Skills</div>
-            <div style={styles.card(colors.cardPeach)}>Built-in Agents / Skills</div>
-            <div style={styles.card(colors.cardPeach)}>Third-Party Agents / Skills</div>
+            <div style={styles.card(colors.cardPeach)}>Company Skills &amp; MCP</div>
+            <div style={styles.card(colors.cardPeach)}>Built-in Skills &amp; MCP</div>
+            <div style={styles.card(colors.cardPeach)}>Third-Party Skills &amp; MCP</div>
           </div>
           <div style={styles.arrow}><ArrowLeft /></div>
         </div>
 
-        {/* Wide cards section with bracket */}
+        {/* Enterprise Agent Harness - 2x2 grid */}
         <div style={{ position: 'relative', marginTop: 24 }}>
           {/* Left bracket + label */}
           <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: contentLeft, display: 'flex', alignItems: 'center' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ fontSize: 15, fontWeight: 600, lineHeight: 1.3, textAlign: 'center' }}>
-                Agent<br />Harness
+                Enterprise<br />Agent<br />Harness
               </div>
               <Bracket height={280} />
             </div>
           </div>
 
-          {/* Wide cards - same width as top rows */}
-          <div style={{ ...styles.rowContainer, marginBottom: 12 }}>
-            <div style={{ width: 120, flexShrink: 0 }} />
-            <div style={{ width: 30, flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={styles.wideCard(colors.cardBeige)}>
-                <div style={styles.wideCardTitle}>Evaluation and Optimization</div>
-                <div style={styles.wideCardDesc}>Built-in loops to improve company-wide memory and company-wide skills</div>
-              </div>
-            </div>
-            <div style={{ width: 30, flexShrink: 0 }} />
-          </div>
-
-          {/* Agent Execution - VM blocks */}
-          <div style={{ ...styles.rowContainer, marginBottom: 12 }}>
-            <div style={{ width: 120, flexShrink: 0 }} />
-            <div style={{ width: 30, flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={{ ...styles.wideCard(colors.cardBeige), padding: '20px 24px' }}>
-                <div style={styles.wideCardTitle}>Agent Execution</div>
-                <div style={{ ...styles.wideCardDesc, marginBottom: 14 }}>Each agent runs in its own isolated VM &mdash; fully sandboxed, secure, and independent</div>
-                <div style={{ display: 'flex', gap: 12 }}>
-                  <div style={styles.vmCard}>
-                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
-                    Claude Code
-                  </div>
-                  <div style={styles.vmCard}>
-                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
-                    Codex
-                  </div>
-                  <div style={styles.vmCard}>
-                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
-                    Rebyte Agent
-                  </div>
-                  <div style={styles.vmCard}>
-                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
-                    Gemini CLI
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div style={{ width: 30, flexShrink: 0 }} />
-          </div>
-
-          {/* Business Context */}
+          {/* 2x2 Grid */}
           <div style={{ ...styles.rowContainer, marginBottom: 0 }}>
             <div style={{ width: 120, flexShrink: 0 }} />
             <div style={{ width: 30, flexShrink: 0 }} />
-            <div style={{ flex: 1 }}>
-              <div style={styles.wideCard(colors.cardBeige)}>
-                <div style={styles.wideCardTitle}>Agent File System</div>
+            <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: 'auto auto', gap: 12 }}>
+              {/* Top-left: Agent Shield */}
+              <div style={{ ...styles.wideCard(colors.cardBeige), padding: '20px 24px' }}>
+                <div style={styles.wideCardTitle}>Agent Shield</div>
+                <div style={styles.wideCardDesc}>Inspect agent activity inside the VM, control what is allowed or disallowed, and full auditing</div>
+              </div>
+
+              {/* Top-right: Evaluation and Optimization */}
+              <div style={{ ...styles.wideCard(colors.cardBeige), padding: '20px 24px' }}>
+                <div style={styles.wideCardTitle}>Evaluation and Optimization</div>
+                <div style={styles.wideCardDesc}>Built-in loops to improve company-wide memory and company-wide skills</div>
+              </div>
+
+              {/* Bottom-left: Agent Execution */}
+              <div style={{ ...styles.wideCard(colors.cardBeige), padding: '20px 24px' }}>
+                <div style={styles.wideCardTitle}>Agent Execution</div>
+                <div style={{ ...styles.wideCardDesc, marginBottom: 14 }}>Each agent runs in its own isolated VM &mdash; fully sandboxed, secure, and independent</div>
+                <div style={{ display: 'flex', gap: 10 }}>
+                  <div style={{ ...styles.vmCard, flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
+                    Coding Agent
+                  </div>
+                  <div style={{ ...styles.vmCard, flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
+                    Research Agent
+                  </div>
+                  <div style={{ ...styles.vmCard, flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
+                    Marketing Agent
+                  </div>
+                  <div style={{ ...styles.vmCard, flex: 1 }}>
+                    <div style={{ fontSize: 11, fontWeight: 500, opacity: 0.6, marginBottom: 4 }}>VM</div>
+                    Data Agent
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom-right: Agent Context */}
+              <div style={{ ...styles.wideCard(colors.cardBeige), padding: '20px 24px' }}>
+                <div style={styles.wideCardTitle}>Agent Context</div>
                 <div style={styles.wideCardDesc}>Shared business context across data, systems, with built-in access control</div>
               </div>
             </div>
             <div style={{ width: 30, flexShrink: 0 }} />
           </div>
 
-          {/* Right bracket + label - absolutely positioned */}
-          <div style={{ position: 'absolute', right: -200, top: -80, bottom: -60, display: 'flex', alignItems: 'center' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <BracketRight height={440} />
-              <div style={{ fontSize: 15, fontWeight: 700, lineHeight: 1.4, width: 160 }}>
-                Enterprise security and governance designed for sensitive and regulated work
-              </div>
-            </div>
-          </div>
         </div>
 
         {/* Your systems of record - split into blocks */}
