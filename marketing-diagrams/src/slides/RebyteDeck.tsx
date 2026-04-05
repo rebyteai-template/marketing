@@ -88,7 +88,7 @@ function SlideCover() {
   return (
     <div style={{ ...slideBase, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
       <div style={{ fontSize: 96, fontWeight: 900, letterSpacing: '-0.03em', marginBottom: 24 }}>Rebyte</div>
-      <div style={{ fontSize: 24, color: colors.textMuted }}>Environments for Enterprise Agents</div>
+      <div style={{ fontSize: 24, color: colors.textMuted }}>The Cloud Runtime for Enterprise Agents</div>
       <div style={{ fontSize: 18, color: colors.accent, marginTop: 32 }}>Available at rebyte.ai</div>
       <Footer />
     </div>
@@ -101,7 +101,7 @@ function SlideProblems() {
     <div style={slideBase}>
       <H1>The Problem</H1>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginTop: 8 }}>
-        <Card title="Agents Need a Runtime">
+        <Card title="Agent Harness Needs a Runtime">
           <Bullet>Each agent requires a full environment &mdash; file system, network, even a VM</Bullet>
           <Bullet>Enterprises need thousands of agents running concurrently</Bullet>
         </Card>
@@ -152,26 +152,67 @@ function SlideKeyPillars() {
       <H1>Key Pillars</H1>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         <div>
-          <div style={pillarTitle}>1. Isolated Sandbox Infrastructure</div>
-          <div style={sub}>(a) Isolated runtime for agents</div>
-          <div style={sub}>(b) Persistent, self-identifiable environments for each agent</div>
+          <div style={pillarTitle}>1. Execution &mdash; Agent Harness Infrastructure</div>
+          <div style={sub}>(a) Agent harness runs in isolated sandbox environments</div>
+          <div style={sub}>(b) Sandbox infrastructure co-designed with the harness for smooth, accessible operation</div>
+          <div style={sub}>(c) Persistent and self-identifiable environments</div>
         </div>
         <div>
-          <div style={pillarTitle}>2. A Semantic Layer for Agent Context</div>
-          <div style={sub}>(a) Deep understanding of business data sources</div>
-          <div style={sub}>(b) Fully ingestible by agents</div>
+          <div style={pillarTitle}>2. Context &mdash; A Semantic Layer Shared by All Agents</div>
+          <div style={sub}>(a) All business data in one place &mdash; databases, warehouses, cloud storage, files</div>
+          <div style={sub}>(b) Structured, schema-aware, and query-ready &mdash; SQL-friendly format any agent can reason over</div>
+          <div style={sub}>(c) Agents get precise answers, not guesses &mdash; direct queries, exact results</div>
         </div>
         <div>
-          <div style={pillarTitle}>3. Agent Shield</div>
-          <div style={sub}>(a) Alerts for bad agent behavior</div>
-          <div style={sub}>(b) Admin controls over what agents can and cannot do</div>
-          <div style={sub}>(c) Full auditing logs for all agent behavior</div>
+          <div style={pillarTitle}>3. Security &mdash; Agent Shield</div>
+          <div style={sub}>(a) Enterprise admin controls &mdash; define what agents can and cannot do, putting a "box" around every agent</div>
+          <div style={sub}>(b) Full monitoring and alerting &mdash; track all agent actions and flag bad behavior in real time</div>
         </div>
-        <div>
-          <div style={pillarTitle}>4. Agent Reproducibility</div>
-          <div style={sub}>(a) Fully reproduce agent behavior at any point in time</div>
-          <div style={sub}>(b) Roll back agents to exact prior state when something goes wrong</div>
-        </div>
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+// Slide 6: Business Model
+function SlideBusinessModel() {
+  return (
+    <div style={slideBase}>
+      <H1>Business Model</H1>
+      <div style={{ display: 'flex', gap: 32, marginTop: 16 }}>
+        <Card title="1. SaaS Provider">
+          <Bullet>Per-employee, per-seat pricing based on usage</Bullet>
+          <Bullet>Launch unlimited agent computers &mdash; pay only for what you use</Bullet>
+          <Bullet>Like running agents (Claude Code, Codex, OpenCode, Gemini) natively in the cloud with your own private skills</Bullet>
+        </Card>
+        <Card title="2. Agent Computer API">
+          <Bullet>Infrastructure API for vertical agent providers</Bullet>
+          <Bullet>Partners focus on their domain skills and business models</Bullet>
+          <Bullet>We run their agents &mdash; they bring the expertise</Bullet>
+        </Card>
+      </div>
+      <Footer />
+    </div>
+  )
+}
+
+// Slide 7: Traction
+function SlideTraction() {
+  return (
+    <div style={slideBase}>
+      <H1>Traction</H1>
+      <div style={{ fontSize: 48, fontWeight: 900, color: colors.accent, marginBottom: 32 }}>4,000+ registered users since launch</div>
+      <SectionTitle>3 Design Partners</SectionTitle>
+      <div style={{ display: 'flex', gap: 24, marginTop: 16 }}>
+        <Card title="Enterprise AI Employees">
+          <Bullet>10+ agents deployed across marketing, engineering, CEO, and data analysis</Bullet>
+        </Card>
+        <Card title="Legal Industry Consultancy">
+          <Bullet>Consulting company building vertical agents for law firms and investors</Bullet>
+        </Card>
+        <Card title="Vertical Construction Company">
+          <Bullet>Domain-specific agents for the construction industry</Bullet>
+        </Card>
       </div>
       <Footer />
     </div>
@@ -187,7 +228,7 @@ function SlideFounders() {
         <div style={{ flex: 1 }}>
           <div style={{ fontSize: 32, fontWeight: 800, marginBottom: 20 }}>Jian</div>
           <Bullet>Early Googler</Bullet>
-          <Bullet>Second-time founder</Bullet>
+          <Bullet>Second-time founder &mdash; previous SaaS company acquired for $60M</Bullet>
           <Bullet>Deep expertise in:</Bullet>
           <SubBullet>Identity management</SubBullet>
           <SubBullet>Distributed systems</SubBullet>
@@ -210,8 +251,9 @@ function SlideFounders() {
 const slides = [
   SlideCover,
   SlideProblems,
-  SlideArchitecture,
   SlideKeyPillars,
+  SlideBusinessModel,
+  SlideTraction,
   SlideFounders,
 ]
 

@@ -4,6 +4,8 @@ import Onboarding from "./onboarding/template";
 import ProductUpdate202603 from "./product-update-2026-03/template";
 import ProductUpdate20260308 from "./product-update-2026-03-08/template";
 import ProductUpdate20260318 from "./product-update-2026-03-18/template";
+import ProductUpdate20260324 from "./product-update-2026-03-24/template";
+import ProductUpdate20260329 from "./product-update-2026-03-29/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -63,6 +65,20 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Weekly update — Serverless agents, recommendations, scheduled tasks, mobile",
     subject: "Weekly Update: Serverless Claw, Scheduled Tasks and More",
+  },
+  "product-update-2026-03-24": {
+    channel: "email",
+    component: ProductUpdate20260324,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — Unlimited agent computers, channel support, stock analysis",
+    subject: "Weekly Update: Unlimited Agent Computers, Channel Support, Stock Analysis",
+  },
+  "product-update-2026-03-29": {
+    channel: "email",
+    component: ProductUpdate20260329,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — Agent Context for enterprise data, embeddable skills",
+    subject: "Weekly Update: Agent Context + Run Skills From Any Website",
   },
   "sms-welcome": {
     channel: "sms",

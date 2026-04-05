@@ -4,6 +4,8 @@ import { RebyteIntroJa } from "./RebyteIntroJa";
 import { Thumbnail } from "./Thumbnail";
 import { ThumbnailJa } from "./ThumbnailJa";
 import { RebyteExplainer, REBYTE_EXPLAINER_TOTAL_FRAMES } from "./RebyteExplainer";
+import { RebyteExplainerJa, REBYTE_EXPLAINER_JA_TOTAL_FRAMES } from "./RebyteExplainerJa";
+import { BrowserAutomation, BROWSER_AUTOMATION_TOTAL_FRAMES } from "./BrowserAutomation";
 
 export const RemotionRoot = () => {
   return (
@@ -33,9 +35,33 @@ export const RemotionRoot = () => {
         height={1080}
       />
       <Composition
+        id="RebyteExplainerSquare"
+        component={RebyteExplainer}
+        durationInFrames={REBYTE_EXPLAINER_TOTAL_FRAMES}
+        fps={30}
+        width={1080}
+        height={1080}
+      />
+      <Composition
         id="Thumbnail"
         component={Thumbnail}
         durationInFrames={1}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="RebyteExplainerJa"
+        component={RebyteExplainerJa}
+        durationInFrames={REBYTE_EXPLAINER_JA_TOTAL_FRAMES}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="BrowserAutomation"
+        component={BrowserAutomation}
+        durationInFrames={BROWSER_AUTOMATION_TOTAL_FRAMES}
         fps={30}
         width={1920}
         height={1080}

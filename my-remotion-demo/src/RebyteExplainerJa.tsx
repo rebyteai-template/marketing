@@ -30,15 +30,15 @@ const BRAND = {
   mono: "SF Mono, Cascadia Code, Consolas, monospace",
 };
 
-// ============ TIMING ============
-const PART1 = 370; // Intro (~12.3s)
-const PART2 = 670; // Marketing Agent (~22.3s)
-const PART3 = 370; // Sales CRM Agent (~12.3s)
-const PART4 = 690; // Collaboration (~23s)
-const PART5 = 270; // Outro (~9s)
+// ============ TIMING (adjusted for Japanese audio) ============
+const PART1 = 540; // Intro (~18s, JA audio 16s)
+const PART2 = 620; // Marketing Agent (~20.7s, JA audio 18.3s)
+const PART3 = 570; // Sales CRM Agent (~19s, JA audio 16.3s)
+const PART4 = 960; // Collaboration (~32s, JA audio 29.9s)
+const PART5 = 300; // Outro (~10s, JA audio 7.9s)
 const TITLE_CARD = 60; // 2s title cards
 
-export const REBYTE_EXPLAINER_TOTAL_FRAMES =
+export const REBYTE_EXPLAINER_JA_TOTAL_FRAMES =
   PART1 + PART2 + PART3 + PART4 + PART5;
 
 // Sequence start offsets
@@ -52,9 +52,8 @@ const IntroScene = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Phase 1: Logo + title — visible from frame 0 for LinkedIn thumbnail
-  const logoScale = frame < 15 ? 1 : spring({ frame: frame - 15, fps, config: { damping: 12 } });
-  const titleOpacity = frame < 15 ? 1 : interpolate(frame, [30, 55], [0, 1], {
+  const logoScale = spring({ frame, fps, config: { damping: 12 } });
+  const titleOpacity = interpolate(frame, [30, 55], [0, 1], {
     extrapolateRight: "clamp",
   });
   const headerFade = interpolate(frame, [65, 85], [1, 0], {
@@ -62,35 +61,25 @@ const IntroScene = () => {
     extrapolateRight: "clamp",
   });
 
-  // Phase 2: Full screenshot fades in (frames 75–95)
   const screenshotOpacity = interpolate(frame, [75, 95], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // Phase 3: Zoom from full view into Agent Computers sidebar (frames 110–240)
   const zoomProgress = interpolate(frame, [110, 240], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  // Ease out for smooth deceleration
   const zoomEased = 1 - Math.pow(1 - zoomProgress, 3);
   const zoomScale = interpolate(zoomEased, [0, 1], [1, 3.5]);
 
-  // Fade out at end
   const fadeOut = interpolate(frame, [PART1 - 30, PART1], [1, 0], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
 
-  // Image sizing: 3600x2338 retina → displayed at 1920 wide
-  // Scale = 1920/1800 = 1.0667, height = 1169 * 1.0667 = 1247
-  // Centered vertically: top = -(1247 - 1080) / 2 = -83.5
-  // Agent Computers center in image element: (135 * 1.067, 360 * 1.067) ≈ (144, 384)
-
   return (
     <AbsoluteFill style={{ background: BRAND.bg, opacity: fadeOut }}>
-      {/* Phase 1: Logo + Title */}
       <AbsoluteFill
         style={{
           justifyContent: "center",
@@ -111,16 +100,15 @@ const IntroScene = () => {
         <div
           style={{
             fontFamily: BRAND.serif,
-            fontSize: 64,
+            fontSize: 56,
             color: BRAND.text,
             opacity: titleOpacity,
           }}
         >
-          Your Agent Team on Cloud
+          クラウド上のAIエージェントチーム
         </div>
       </AbsoluteFill>
 
-      {/* Phase 2+3: Full screenshot → zoom into Agent Computers */}
       <AbsoluteFill style={{ opacity: screenshotOpacity, overflow: "hidden" }}>
         <Img
           src={staticFile("explainer/agent-computers-ui.png")}
@@ -176,7 +164,7 @@ const TitleCard = ({
       <div
         style={{
           fontFamily: BRAND.serif,
-          fontSize: 56,
+          fontSize: 52,
           color: BRAND.text,
           transform: `scale(${scale})`,
           marginBottom: 16,
@@ -187,7 +175,7 @@ const TitleCard = ({
       <div
         style={{
           fontFamily: BRAND.sans,
-          fontSize: 24,
+          fontSize: 22,
           color: BRAND.textSecondary,
           opacity: subOpacity,
         }}
@@ -229,7 +217,7 @@ const CaptionOverlay = ({
       <div
         style={{
           fontFamily: BRAND.sans,
-          fontSize: 28,
+          fontSize: 26,
           fontWeight: 600,
           color: "#fff",
           background: "rgba(42, 37, 32, 0.8)",
@@ -269,7 +257,7 @@ const SplitLabels = ({ durationInFrames }: { durationInFrames: number }) => {
         pointerEvents: "none",
       }}
     >
-      {["Agent", "Human"].map((label) => (
+      {["エージェント", "人間"].map((label) => (
         <div
           key={label}
           style={{
@@ -282,16 +270,15 @@ const SplitLabels = ({ durationInFrames }: { durationInFrames: number }) => {
           <div
             style={{
               fontFamily: BRAND.sans,
-              fontSize: 48,
+              fontSize: 44,
               fontWeight: 700,
               color: "#fff",
               background: "rgba(42, 37, 32, 0.7)",
-              padding: "20px 60px",
+              padding: "20px 50px",
               borderRadius: 16,
               backdropFilter: "blur(10px)",
               border: "2px solid rgba(255,255,255,0.2)",
               letterSpacing: 2,
-              textTransform: "uppercase",
             }}
           >
             {label}
@@ -351,13 +338,13 @@ const OutroScene = () => {
   const { fps } = useVideoConfig();
 
   const cards = [
-    { text: "Marketing", delay: 0 },
-    { text: "Sales", delay: 8 },
-    { text: "Legal", delay: 16 },
+    { text: "マーケティング", delay: 0 },
+    { text: "営業", delay: 8 },
+    { text: "法務", delay: 16 },
     { text: "CEO", delay: 24 },
-    { text: "Finance", delay: 32 },
-    { text: "HR", delay: 40 },
-    { text: "Operations", delay: 48 },
+    { text: "財務", delay: 32 },
+    { text: "人事", delay: 40 },
+    { text: "オペレーション", delay: 48 },
   ];
 
   const logoScale = spring({
@@ -422,13 +409,13 @@ const OutroScene = () => {
       <div
         style={{
           fontFamily: BRAND.serif,
-          fontSize: 40,
+          fontSize: 36,
           color: BRAND.text,
           opacity: taglineOpacity,
           marginBottom: 16,
         }}
       >
-        Your agent team on cloud.
+        クラウド上のAIエージェントチーム
       </div>
 
       <div
@@ -446,24 +433,23 @@ const OutroScene = () => {
 };
 
 // ============ MAIN COMPOSITION ============
-export const RebyteExplainer = () => {
+export const RebyteExplainerJa = () => {
   return (
     <AbsoluteFill style={{ background: BRAND.bg }}>
-      {/* Background Music */}
       <Audio src={staticFile("audio/bg.mp3")} volume={0.015} />
 
-      {/* Part 1: Intro */}
+      {/* Part 1: イントロ */}
       <Sequence from={0} durationInFrames={PART1}>
         <IntroScene />
-        <Audio src={staticFile("explainer/audio/part1.mp3")} />
+        <Audio src={staticFile("explainer/audio/part1-ja.mp3")} />
       </Sequence>
 
-      {/* Part 2: Marketing Agent */}
+      {/* Part 2: マーケティングエージェント */}
       <Sequence from={P2_START} durationInFrames={PART2}>
         <Sequence from={0} durationInFrames={TITLE_CARD}>
           <TitleCard
-            title="Marketing Agent"
-            subtitle="Blog research → Google Docs marketing plan"
+            title="マーケティングエージェント"
+            subtitle="ブログ調査 → Google Docsマーケティングプラン"
             icon="📣"
           />
         </Sequence>
@@ -472,29 +458,29 @@ export const RebyteExplainer = () => {
             videoSrc="explainer/videos/marketing-v2.mp4"
             durationInFrames={PART2 - TITLE_CARD}
             captions={[
-              { text: "Reading rebyte.ai/blog...", from: 0, duration: 150 },
+              { text: "rebyte.ai/blogを読み取り中...", from: 0, duration: 150 },
               {
-                text: "Writing marketing plan in Google Docs",
+                text: "Google Docsでマーケティングプランを作成中",
                 from: 170,
                 duration: 150,
               },
               {
-                text: "Executive Summary, Value Props, Personas, Strategy",
+                text: "エグゼクティブサマリー、価値提案、ペルソナ、戦略",
                 from: 340,
                 duration: 130,
               },
             ]}
           />
         </Sequence>
-        <Audio src={staticFile("explainer/audio/part2.mp3")} />
+        <Audio src={staticFile("explainer/audio/part2-ja.mp3")} />
       </Sequence>
 
-      {/* Part 3: Sales CRM Agent */}
+      {/* Part 3: 営業CRMエージェント */}
       <Sequence from={P3_START} durationInFrames={PART3}>
         <Sequence from={0} durationInFrames={TITLE_CARD}>
           <TitleCard
-            title="Sales CRM Agent"
-            subtitle="Prompt → Full CRM in Google Sheets"
+            title="営業CRMエージェント"
+            subtitle="プロンプト → Google Sheetsで完全なCRM"
             icon="📊"
           />
         </Sequence>
@@ -504,32 +490,32 @@ export const RebyteExplainer = () => {
             durationInFrames={PART3 - TITLE_CARD}
             captions={[
               {
-                text: "One prompt to build a complete CRM",
+                text: "一つのプロンプトで完全なCRMを構築",
                 from: 0,
                 duration: 150,
               },
               {
-                text: "Formulas, filters, and formatting — automatic",
+                text: "数式、フィルター、書式設定 — すべて自動",
                 from: 170,
                 duration: 150,
               },
               {
-                text: "Summary dashboard with live totals",
+                text: "リアルタイム集計のサマリーダッシュボード",
                 from: 340,
                 duration: 145,
               },
             ]}
           />
         </Sequence>
-        <Audio src={staticFile("explainer/audio/part3.mp3")} />
+        <Audio src={staticFile("explainer/audio/part3-ja.mp3")} />
       </Sequence>
 
-      {/* Part 4: Collaboration */}
+      {/* Part 4: コラボレーション */}
       <Sequence from={P4_START} durationInFrames={PART4}>
         <Sequence from={0} durationInFrames={TITLE_CARD}>
           <TitleCard
-            title="Collaboration"
-            subtitle="AI agent + Human — same Google Sheet, real time"
+            title="コラボレーション"
+            subtitle="AIエージェント + 人間 — 同じGoogle Sheet、リアルタイム"
             icon="🤝"
           />
         </Sequence>
@@ -540,30 +526,30 @@ export const RebyteExplainer = () => {
             splitLabels
             captions={[
               {
-                text: "Agent and human — same spreadsheet, real time",
+                text: "エージェントと人間 — 同じスプレッドシート、リアルタイム",
                 from: 0,
-                duration: 180,
-              },
-              {
-                text: "21 leads imported with full contact details",
-                from: 200,
                 duration: 200,
               },
               {
-                text: "$1.96M pipeline — built in minutes",
-                from: 420,
-                duration: 180,
+                text: "21件のリードを連絡先情報付きでインポート",
+                from: 220,
+                duration: 250,
+              },
+              {
+                text: "196万ドルのパイプライン — 数分で構築",
+                from: 500,
+                duration: 200,
               },
             ]}
           />
         </Sequence>
-        <Audio src={staticFile("explainer/audio/part4.mp3")} />
+        <Audio src={staticFile("explainer/audio/part4-ja.mp3")} />
       </Sequence>
 
-      {/* Part 5: Outro */}
+      {/* Part 5: アウトロ */}
       <Sequence from={P5_START} durationInFrames={PART5}>
         <OutroScene />
-        <Audio src={staticFile("explainer/audio/part5.mp3")} />
+        <Audio src={staticFile("explainer/audio/part5-ja.mp3")} />
       </Sequence>
     </AbsoluteFill>
   );

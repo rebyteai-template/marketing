@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
+      text { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+      /* Scene 1: scan (0-1.5s), fade out */
+      .scene1 { animation: s1 10s linear forwards; }
+      @keyframes s1 { 0%,12%{opacity:1} 18%,100%{opacity:0} }
+
+      /* Scene 2 chrome: fade in at 1.8s */
+      .scene2 { opacity:0; animation: fadeIn .4s ease-out 1.8s forwards; }
+
+      .dot1{animation:pulse .8s ease-in-out infinite}
+      .dot2{animation:pulse .8s ease-in-out .15s infinite}
+      .dot3{animation:pulse .8s ease-in-out .3s infinite}
+      @keyframes pulse{0%,100%{opacity:.2}50%{opacity:1}}
+
+      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+      /* Base text: fade in at 2s */
+      .base-text{opacity:0;animation:fadeIn .4s ease-out 2s forwards}
+
+      /* Page 1: Person (2.2s - 3.8s) */
+      .page1{opacity:0;animation:p1 10s linear forwards}
+      @keyframes p1{
+        0%,21%{opacity:0}
+        24%{opacity:1}
+        36%{opacity:1}
+        40%{opacity:0}
+        100%{opacity:0}
+      }
+
+      /* Page 2: Date (4s - 5.6s) */
+      .page2{opacity:0;animation:p2 10s linear forwards}
+      @keyframes p2{
+        0%,40%{opacity:0}
+        43%{opacity:1}
+        54%{opacity:1}
+        58%{opacity:0}
+        100%{opacity:0}
+      }
+
+      /* Page 3: Percentage + Company (5.8s - 7.6s) */
+      .page3{opacity:0;animation:p3 10s linear forwards}
+      @keyframes p3{
+        0%,58%{opacity:0}
+        61%{opacity:1}
+        74%{opacity:1}
+        78%{opacity:0}
+        100%{opacity:0}
+      }
+
+      /* Page 4: Monetary + tooltip (8s - 10s) */
+      .page4{opacity:0;animation:p4 10s linear forwards}
+      @keyframes p4{
+        0%,78%{opacity:0}
+        81%{opacity:1}
+        100%{opacity:1}
+      }
+
+      /* Tooltip at 9s */
+      .tooltip{opacity:0;animation:fadeIn .4s ease-out 9s forwards}
+
+      /* Next button flashes at each transition */
+      .next-btn{animation:nf 10s linear forwards}
+      @keyframes nf{
+        0%,38%{fill:#f0ece6}
+        39%{fill:#d8d0c4}40%{fill:#d8d0c4}42%{fill:#f0ece6}
+        56%{fill:#f0ece6}
+        57%{fill:#d8d0c4}58%{fill:#d8d0c4}60%{fill:#f0ece6}
+        76%{fill:#f0ece6}
+        77%{fill:#d8d0c4}78%{fill:#d8d0c4}80%{fill:#f0ece6}
+        100%{fill:#f0ece6}
+      }
+
+      /* Active legend highlight */
+      .leg1{opacity:0;animation:p1 10s linear forwards}
+      .leg2{opacity:0;animation:p2 10s linear forwards}
+      .leg3{opacity:0;animation:p3 10s linear forwards}
+      .leg4{opacity:0;animation:p4 10s linear forwards}
+    </style>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-opacity="0.08"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#faf8f5"/>
+      <stop offset="100%" stop-color="#f0ece6"/>
+    </linearGradient>
+    <linearGradient id="scanGrad" x1="0" y1="0" x2="1080" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4A90D9" stop-opacity="0"/>
+      <stop offset="20%" stop-color="#4A90D9" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#6B7FD7" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#4A90D9" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#4A90D9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bgGrad)"/>
+
+  <!-- Title -->
+  <text x="60" y="56" font-size="16" font-weight="700" fill="#b08050" letter-spacing="3">REBYTE SKILL</text>
+  <text x="60" y="100" font-size="42" font-weight="900" fill="#1a1a1a">Super Extract</text>
+  <text x="60" y="132" font-size="18" font-weight="400" fill="#888">Extract structured entities from any document with source grounding</text>
+
+  <!-- ==================== SCENE 1: Scan (0-1.5s) ==================== -->
+  <g class="scene1">
+    <rect x="60" y="160" width="1080" height="460" rx="16" fill="white" filter="url(#shadow)"/>
+    <g transform="translate(340, 270)">
+      <rect x="0" y="0" width="80" height="96" rx="6" fill="#f5f0e8" stroke="#d8d0c0" stroke-width="1.5"/>
+      <rect x="0" y="0" width="80" height="24" rx="6" fill="#ece4d8"/>
+      <rect x="0" y="18" width="80" height="6" fill="#ece4d8"/>
+      <text x="40" y="17" font-size="9" font-weight="700" fill="#999" text-anchor="middle">PDF</text>
+      <line x1="12" y1="38" x2="68" y2="38" stroke="#d0c8b8" stroke-width="1.5"/>
+      <line x1="12" y1="48" x2="68" y2="48" stroke="#d0c8b8" stroke-width="1.5"/>
+      <line x1="12" y1="58" x2="55" y2="58" stroke="#d0c8b8" stroke-width="1.5"/>
+      <line x1="12" y1="68" x2="68" y2="68" stroke="#d0c8b8" stroke-width="1.5"/>
+      <line x1="12" y1="78" x2="45" y2="78" stroke="#d0c8b8" stroke-width="1.5"/>
+      <text x="100" y="28" font-size="24" font-weight="800" fill="#1a1a1a">Berkshire Hathaway</text>
+      <text x="100" y="58" font-size="24" font-weight="800" fill="#1a1a1a">2023 Annual Letter</text>
+      <text x="100" y="84" font-size="15" fill="#999">47 pages  |  Warren Buffett</text>
+    </g>
+    <rect x="80" y="180" width="1040" height="4" rx="2" fill="url(#scanGrad)" filter="url(#glow)">
+      <animate attributeName="y" from="180" to="590" dur="1.3s" fill="freeze"/>
+      <animate attributeName="opacity" values="0;0.9;0.9;0" keyTimes="0;0.05;0.8;1" dur="1.3s" fill="freeze"/>
+    </rect>
+    <g transform="translate(405, 450)">
+      <text x="0" y="0" font-size="17" font-weight="600" fill="#4A90D9">Extracting entities</text>
+      <circle class="dot1" cx="160" cy="-4" r="3" fill="#4A90D9"/>
+      <circle class="dot2" cx="172" cy="-4" r="3" fill="#4A90D9"/>
+      <circle class="dot3" cx="184" cy="-4" r="3" fill="#4A90D9"/>
+    </g>
+  </g>
+
+  <!-- ==================== SCENE 2: Chrome ==================== -->
+  <g class="scene2">
+    <rect x="60" y="160" width="1080" height="460" rx="16" fill="white" filter="url(#shadow)"/>
+    <rect x="60" y="160" width="1080" height="52" rx="16" fill="#f8f6f2"/>
+    <rect x="60" y="196" width="1080" height="16" fill="#f8f6f2"/>
+    <text x="84" y="193" font-size="14" font-weight="700" fill="#555">Berkshire Hathaway 2023 Letter Extraction</text>
+    <text x="1060" y="193" font-size="13" font-weight="600" fill="#999" text-anchor="end">22 entities</text>
+
+    <!-- Legend (dimmed base) -->
+    <circle cx="92" cy="236" r="6" fill="#4A90D9" opacity="0.3"/>
+    <text x="104" y="240" font-size="12" font-weight="600" fill="#aaa">Person (3)</text>
+    <circle cx="202" cy="236" r="6" fill="#4CAF82" opacity="0.3"/>
+    <text x="214" y="240" font-size="12" font-weight="600" fill="#aaa">Date (3)</text>
+    <circle cx="302" cy="236" r="6" fill="#E8B84A" opacity="0.3"/>
+    <text x="314" y="240" font-size="12" font-weight="600" fill="#aaa">Percentage (2)</text>
+    <circle cx="432" cy="236" r="6" fill="#D4645C" opacity="0.3"/>
+    <text x="444" y="240" font-size="12" font-weight="600" fill="#aaa">Company (7)</text>
+    <circle cx="552" cy="236" r="6" fill="#6B7FD7" opacity="0.3"/>
+    <text x="564" y="240" font-size="12" font-weight="600" fill="#aaa">Monetary Amount (6)</text>
+    <circle cx="722" cy="236" r="6" fill="#5AAD73" opacity="0.3"/>
+    <text x="734" y="240" font-size="12" font-weight="600" fill="#aaa">Investment Principle (1)</text>
+
+    <!-- Nav -->
+    <rect x="84" y="260" width="72" height="30" rx="6" fill="#f0ece6"/>
+    <text x="120" y="280" font-size="12" font-weight="700" fill="#555" text-anchor="middle">&#9664; Prev</text>
+    <rect class="next-btn" x="164" y="260" width="72" height="30" rx="6" fill="#f0ece6"/>
+    <text x="200" y="280" font-size="12" font-weight="700" fill="#555" text-anchor="middle">Next &#9654;</text>
+  </g>
+
+  <!-- ===== Active legend highlights (bright overlay on current category) ===== -->
+  <g class="leg1">
+    <circle cx="92" cy="236" r="6" fill="#4A90D9"/>
+    <text x="104" y="240" font-size="12" font-weight="700" fill="#333">Person (3)</text>
+  </g>
+  <g class="leg2">
+    <circle cx="202" cy="236" r="6" fill="#4CAF82"/>
+    <text x="214" y="240" font-size="12" font-weight="700" fill="#333">Date (3)</text>
+  </g>
+  <g class="leg3">
+    <circle cx="302" cy="236" r="6" fill="#E8B84A"/>
+    <text x="314" y="240" font-size="12" font-weight="700" fill="#333">Percentage (2)</text>
+    <circle cx="432" cy="236" r="6" fill="#D4645C"/>
+    <text x="444" y="240" font-size="12" font-weight="700" fill="#333">Company (7)</text>
+  </g>
+  <g class="leg4">
+    <circle cx="552" cy="236" r="6" fill="#6B7FD7"/>
+    <text x="564" y="240" font-size="12" font-weight="700" fill="#333">Monetary Amount (6)</text>
+  </g>
+
+  <!-- ==================== BASE TEXT ==================== -->
+  <g class="base-text">
+    <text x="88" y="327" font-size="15" fill="#555">Charlie Munger</text>
+    <text x="218" y="327" font-size="15" fill="#333"> died on </text>
+    <text x="284" y="327" font-size="15" fill="#555">November 28</text>
+    <text x="392" y="327" font-size="15" fill="#333"> , just 33 days before his 100th birthday. Though born and raised in Omaha, he spent</text>
+
+    <text x="88" y="363" font-size="15" fill="#555">80%</text>
+    <text x="130" y="363" font-size="15" fill="#333"> of his life domiciled elsewhere. Consequently, it was not until </text>
+    <text x="644" y="363" font-size="15" fill="#555">1959</text>
+    <text x="688" y="363" font-size="15" fill="#333"> when he was 35 that I first met him. In</text>
+
+    <text x="88" y="399" font-size="15" fill="#555">1962</text>
+    <text x="130" y="399" font-size="15" fill="#333"> , he decided that he should take up money management. Three years later he told me &#x2014; correctly! &#x2014; that I had</text>
+
+    <text x="84" y="435" font-size="15" fill="#333">made a dumb decision in buying control of </text>
+    <text x="386" y="435" font-size="15" fill="#555">Berkshire</text>
+    <text x="474" y="435" font-size="15" fill="#333"> . Nevertheless, Charlie, in 1965, promptly advised me: &#x201C;</text>
+    <text x="888" y="435" font-size="15" fill="#555">Warren</text>
+
+    <text x="84" y="471" font-size="15" fill="#333">, forget about ever buying another company like </text>
+    <text x="406" y="471" font-size="15" fill="#555">Berkshire</text>
+    <text x="494" y="471" font-size="15" fill="#333"> . But now that you control Berkshire, add to it wonderful businesses</text>
+
+    <text x="88" y="507" font-size="15" fill="#333">purchased at fair prices and give up buying fair businesses at wonderful prices</text>
+    <text x="568" y="507" font-size="15" fill="#333"> .&#x201D;</text>
+
+    <text x="84" y="543" font-size="15" fill="#333">&#x201C;Berkshire has more than three million shareholder accounts. The numbers read </text>
+    <text x="704" y="543" font-size="15" fill="#555">$90 billion</text>
+    <text x="790" y="543" font-size="15" fill="#333"> for 2021,</text>
+
+    <text x="88" y="579" font-size="15" fill="#555">($23 billion)</text>
+    <text x="184" y="579" font-size="15" fill="#333"> for 2022 and </text>
+    <text x="314" y="579" font-size="15" fill="#555">$96 billion</text>
+    <text x="400" y="579" font-size="15" fill="#333"> for 2023. Operating earnings: </text>
+    <text x="640" y="579" font-size="15" fill="#555">$27.6 billion</text>
+    <text x="740" y="579" font-size="15" fill="#333"> for 2021;</text>
+  </g>
+
+  <!-- ==================== PAGE 1: Person (2.2s-3.8s) ==================== -->
+  <g class="page1">
+    <text x="1060" y="280" font-size="12" font-weight="500" fill="#999" text-anchor="end">1 / 22</text>
+    <rect x="84" y="310" width="128" height="24" rx="4" fill="#4A90D9" fill-opacity="0.18"/>
+    <text x="88" y="327" font-size="15" font-weight="700" fill="#4A90D9">Charlie Munger</text>
+    <rect x="884" y="418" width="68" height="24" rx="4" fill="#4A90D9" fill-opacity="0.18"/>
+    <text x="888" y="435" font-size="15" font-weight="700" fill="#4A90D9">Warren</text>
+  </g>
+
+  <!-- ==================== PAGE 2: Date (4s-5.6s) ==================== -->
+  <g class="page2">
+    <text x="1060" y="280" font-size="12" font-weight="500" fill="#999" text-anchor="end">4 / 22</text>
+    <rect x="280" y="310" width="108" height="24" rx="4" fill="#4CAF82" fill-opacity="0.18"/>
+    <text x="284" y="327" font-size="15" font-weight="700" fill="#3a8a5e">November 28</text>
+    <rect x="640" y="346" width="42" height="24" rx="4" fill="#4CAF82" fill-opacity="0.18"/>
+    <text x="644" y="363" font-size="15" font-weight="700" fill="#3a8a5e">1959</text>
+    <rect x="84" y="382" width="42" height="24" rx="4" fill="#4CAF82" fill-opacity="0.18"/>
+    <text x="88" y="399" font-size="15" font-weight="700" fill="#3a8a5e">1962</text>
+  </g>
+
+  <!-- ==================== PAGE 3: Percentage + Company (5.8s-7.6s) ==================== -->
+  <g class="page3">
+    <text x="1060" y="280" font-size="12" font-weight="500" fill="#999" text-anchor="end">9 / 22</text>
+    <rect x="84" y="346" width="42" height="24" rx="4" fill="#E8B84A" fill-opacity="0.18"/>
+    <text x="88" y="363" font-size="15" font-weight="700" fill="#b8892a">80%</text>
+    <rect x="382" y="418" width="88" height="24" rx="4" fill="#D4645C" fill-opacity="0.18"/>
+    <text x="386" y="435" font-size="15" font-weight="700" fill="#c04a42">Berkshire</text>
+    <rect x="402" y="454" width="88" height="24" rx="4" fill="#D4645C" fill-opacity="0.18"/>
+    <text x="406" y="471" font-size="15" font-weight="700" fill="#c04a42">Berkshire</text>
+    <rect x="84" y="490" width="480" height="24" rx="4" fill="#5AAD73" fill-opacity="0.12"/>
+  </g>
+
+  <!-- ==================== PAGE 4: Monetary (8s-10s) ==================== -->
+  <g class="page4">
+    <text x="1060" y="280" font-size="12" font-weight="500" fill="#999" text-anchor="end">17 / 22</text>
+    <rect x="700" y="526" width="86" height="24" rx="4" fill="#6B7FD7" fill-opacity="0.18"/>
+    <text x="704" y="543" font-size="15" font-weight="700" fill="#5568b8">$90 billion</text>
+    <rect x="84" y="562" width="96" height="24" rx="4" fill="#6B7FD7" fill-opacity="0.18"/>
+    <text x="88" y="579" font-size="15" font-weight="700" fill="#5568b8">($23 billion)</text>
+    <rect x="310" y="562" width="86" height="24" rx="4" fill="#6B7FD7" fill-opacity="0.18"/>
+    <text x="314" y="579" font-size="15" font-weight="700" fill="#5568b8">$96 billion</text>
+    <rect x="636" y="562" width="100" height="24" rx="4" fill="#6B7FD7" fill-opacity="0.18"/>
+    <text x="640" y="579" font-size="15" font-weight="700" fill="#5568b8">$27.6 billion</text>
+  </g>
+
+  <!-- Tooltip (page 4) -->
+  <g class="tooltip" transform="translate(636, 530)">
+    <rect x="0" y="0" width="180" height="52" rx="8" fill="white" stroke="#ddd" stroke-width="1"/>
+    <rect x="0" y="0" width="180" height="22" rx="8" fill="#f5f3ef"/>
+    <rect x="0" y="14" width="180" height="8" fill="#f5f3ef"/>
+    <text x="12" y="15" font-size="10" font-weight="700" fill="#888" letter-spacing="0.5">MONETARY AMOUNT</text>
+    <text x="12" y="39" font-size="13" font-weight="700" fill="#333">$96 billion</text>
+    <text x="12" y="48" font-size="10" fill="#888">Context: Net earnings 2023</text>
+    <polygon points="40,52 50,60 60,52" fill="white"/>
+    <line x1="40" y1="52" x2="50" y2="60" stroke="#ddd" stroke-width="1"/>
+    <line x1="60" y1="52" x2="50" y2="60" stroke="#ddd" stroke-width="1"/>
+  </g>
+
+  <!-- Watermark -->
+  <text x="1120" y="660" font-size="14" font-weight="600" fill="#b0a890" text-anchor="end">rebyte.ai</text>
+</svg>

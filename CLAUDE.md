@@ -63,6 +63,10 @@ node .claude/skills/elevenlabs/generate.js "Your script text" --output ./path/to
 node .claude/skills/elevenlabs/generate.js "Rebyte moves your agents to the cloud." --voice 21m00Tcm4TlvDq8ikWAM --output ./my-remotion-demo/public/audio/part-02.mp3
 ```
 
+## Email Templates
+
+- **Never use emojis** in email templates. Use real logos/icons (via `<Img>` tags) instead.
+
 ## Postmark API Key
 
 ```
