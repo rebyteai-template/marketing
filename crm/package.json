@@ -2,9 +2,9 @@
   "name": "rebyte-emails",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 4000",
+    "dev": "next dev --port 10000",
     "build": "next build",
-    "start": "next start --port 4000",
+    "start": "next start --port 10000",
     "send": "tsx send.ts"
   },
   "dependencies": {

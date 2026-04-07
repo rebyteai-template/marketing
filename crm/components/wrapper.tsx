@@ -15,7 +15,11 @@ interface WrapperProps {
 export function Wrapper({ preview, children }: WrapperProps) {
   return (
     <Html>
-      <Head />
+      <Head>
+        <meta name="color-scheme" content="light only" />
+        <meta name="supported-color-schemes" content="light" />
+        <style>{`:root { color-scheme: light only; supported-color-schemes: light; }`}</style>
+      </Head>
       <Preview>{preview}</Preview>
       <Body style={body}>
         <Container style={container}>{children}</Container>
