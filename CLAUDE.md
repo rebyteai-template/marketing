@@ -1,4 +1,13 @@
-# Remotion Video Project
+# marketing
+
+Rebyte 营销工具集 monorepo。完整结构和各子项目说明见 `README.md`，本文件只放 agent 跑任务用的工作流（TTS、邮件模板规则、API key）。
+
+主要子项目：
+
+- `crm/` — 自建 CRM + messaging server（Next.js + SQLite + Postmark + Clerk sync）
+- `src/` + `my-remotion-demo/` — Remotion 视频工程（marketing video 编辑）
+- `marketing-diagrams/` — 营销图 web app（Vite）
+- `wechat/` — 公众号草稿
 
 ## TTS (Text-to-Speech) Workflow
 

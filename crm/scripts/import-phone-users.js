@@ -4,7 +4,7 @@
  * Import phone users from users_dump.csv into SMS groups.
  *
  * Usage:
- *   node emails/scripts/import-phone-users.js
+ *   node crm/scripts/import-phone-users.js
  *
  * Reads ../users_dump.csv (relative to project root), filters for provider=phone,
  * extracts phone from providerId, deduplicates, and creates SMS groups of 500.
@@ -16,7 +16,7 @@ const Database = require("better-sqlite3");
 
 const PROJECT_ROOT = path.resolve(__dirname, "../..");
 const CSV_PATH = path.join(PROJECT_ROOT, "users_dump.csv");
-const DB_PATH = path.join(PROJECT_ROOT, "emails", "data.db");
+const DB_PATH = path.join(PROJECT_ROOT, "crm", "data.db");
 const GROUP_SIZE = 500;
 
 function parseCsvLine(line, headers) {
