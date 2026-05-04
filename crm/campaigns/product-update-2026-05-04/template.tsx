@@ -204,7 +204,7 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
           worked, what didn&apos;t, why these three things mattered.
         </Text>
 
-        <Button href="https://rebyte.ai/blog/a-month-of-building-rebyte-from-my-phone">
+        <Button href="https://rebyte.ai/blog/a-month-on-my-phone">
           Read: A Month of Building Rebyte From My Phone
         </Button>
 
