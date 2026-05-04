@@ -39,3 +39,15 @@ data.db-wal
 # Build artifacts
 .open-next/
 .rebyte/
+
+# AI agent local configs (per-machine)
+.agent/
+.codex/
+.cursor/
+.gemini/
+.goose/
+.opencode/
+.windsurf/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
