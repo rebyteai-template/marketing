@@ -31,7 +31,7 @@ marketing/
 - **Console UI**：`/`，左边栏选 campaign 或 group，右边 Preview / Send tab，Send 必须先 Dry Run 看清单
 - **发送**：email 走 Postmark；SMS 占位待接
 
-跑起来：
+跑起来（本地）：
 
 ```bash
 cd crm
@@ -39,6 +39,13 @@ pnpm install
 pnpm dev      # http://localhost:4000
 pnpm send     # CLI 发送（参考 send.ts）
 ```
+
+**线上跑在 mini 上（tailnet only）**：
+
+- URL: `https://homos-mac-mini.tigris-bigeye.ts.net:8443`
+- 路径：`~/src/cc/marketing/crm` on `homos-mac-mini`
+- launchd label：`rebyte.marketing.crm`，`KeepAlive=true`（重启自动起）
+- 部署套路见 shared-memories `skills/add-growth-tool`，redeploy 走 `git pull && pnpm build && launchctl kickstart -k gui/$(id -u homo)/rebyte.marketing.crm`
 
 Postmark API key 在 `CLAUDE.md`（私仓 OK，但别对外）。
 
