@@ -7,6 +7,8 @@ import ProductUpdate20260318 from "./product-update-2026-03-18/template";
 import ProductUpdate20260324 from "./product-update-2026-03-24/template";
 import ProductUpdate20260329 from "./product-update-2026-03-29/template";
 import ProductUpdate20260407 from "./product-update-2026-04-07/template";
+import ProductUpdate20260417 from "./product-update-2026-04-17/template";
+import ProductUpdate20260421 from "./product-update-2026-04-21/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -87,6 +89,20 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Weekly update — Run any skill from anywhere + Microsoft Office chip + Show Me How widgets",
     subject: "Weekly Update: Run Any Skill From a URL + Office + Show Me How",
+  },
+  "product-update-2026-04-17": {
+    channel: "email",
+    component: ProductUpdate20260417,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — Slides: 16 designer templates, two rendering modes, visual click-to-edit",
+    subject: "Weekly Update: Make Exceptional Slides Effortlessly",
+  },
+  "product-update-2026-04-21": {
+    channel: "email",
+    component: ProductUpdate20260421,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — Bring Your Own Subscription or API Key, or use Rebyte credits with transparent per-task usage",
+    subject: "Rebyte Now Can Use Your Own Key / Subscription",
   },
   "sms-welcome": {
     channel: "sms",
