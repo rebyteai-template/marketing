@@ -36,7 +36,7 @@ marketing/
 ```bash
 cd crm
 pnpm install
-pnpm dev      # http://localhost:4000
+pnpm dev      # http://localhost:10000
 pnpm send     # CLI 发送（参考 send.ts）
 ```
 
