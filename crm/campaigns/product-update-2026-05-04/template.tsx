@@ -49,75 +49,104 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
   const displayName = lastName || "there";
 
   return (
-    <Wrapper preview="High-fidelity voice, recap chips, and a real mobile PWA — Rebyte is now the way you drive agents on the go.">
+    <Wrapper preview="Install Rebyte as a real app on your phone, then run your company without ever opening a laptop again — voice in, voice out.">
       <Hero
-        title="Run Real Agents From Your Pocket"
-        ctaText="Open Rebyte on Mobile"
-        ctaHref="https://app.rebyte.ai/download"
+        title="Run Your Company From Your Pocket"
+        ctaText="Install Rebyte on Your Phone"
+        ctaHref="https://rebyte.ai/download"
       />
 
       {/* Body */}
       <Section style={section}>
         <Text style={paragraph}>Hey {displayName},</Text>
         <Text style={paragraph}>
-          For the last month one of us has been running Rebyte almost
-          entirely from a phone &mdash; talking to it, listening to it,
-          glancing at it between meetings. The features below are the ones
-          that came out of that. They land together this week.
+          Last month one of us ran most of Rebyte&apos;s company from a
+          phone &mdash; talking to agents on the way to lunch, listening to
+          results between meetings, never opening a laptop. Three changes
+          shipped this week to make that the default.
         </Text>
 
         <Hr style={hr} />
 
         <Text style={sectionLabel}>WHAT&apos;S NEW</Text>
 
-        {/* ── Feature 1: Voice ── */}
-        <FeatureCard
-          badge="VOICE"
-          badgeColor="#1a1a1a"
-          title="Speak to your agent in HD"
-          body={
-            <>
-              We swapped the browser&apos;s default text-to-speech for
-              OpenAI&apos;s <strong>tts-1</strong> &mdash; same voice your
-              agent uses everywhere, finally without the robot accent. Every
-              assistant reply now has a <strong>Read-Aloud</strong> button:
-              tap it and Rebyte summarizes the response and plays it back as
-              MP3. Transcription got sharper too &mdash; raw speech goes
-              through a 2-second polish pass before it hits your prompt.
-            </>
-          }
-        />
-
-        {/* ── Feature 2: Recap ── */}
-        <FeatureCard
-          badge="RECAP"
-          badgeColor="#2d5f8f"
-          title="Instant TL;DR for every reply"
-          body={
-            <>
-              Wrap a one-line summary in <code style={inlineCode}>&lt;recap&gt;...&lt;/recap&gt;</code>{" "}
-              and Rebyte renders it as a compact chip in the chat &mdash;
-              right above the full response. Skim a long agent run by
-              reading just the chips, or tap the playback button and{" "}
-              <strong>listen</strong> while you&apos;re doing something else.
-              Works on web, desktop, and mobile.
-            </>
-          }
-        />
-
-        {/* ── Feature 3: Mobile PWA ── */}
+        {/* ── Feature 1: Mobile / PWA ── */}
         <FeatureCard
           badge="MOBILE"
-          badgeColor="#ff6b4a"
-          title="Add to home screen, never miss a task"
+          badgeColor="#1a1a1a"
+          title="Install Rebyte as a real app, in 10 seconds"
           body={
             <>
               The new <strong>Download page</strong> walks you through
-              installing Rebyte as a Progressive Web App on iOS and Android
-              &mdash; same icon, same launch, same notifications as a native
-              app. Inside the app, the task list now polls live on mobile
-              (no more stale spinners), and scheduled tasks are tagged with
-              a repeat icon across every list.
+              Add-to-Home-Screen for iOS Safari and Android Chrome. Once
+              installed it&apos;s a real PWA: home-screen icon, full-screen
+              launch, push notifications, and &mdash; new this week &mdash;
+              live-polling status on every task list, plus a repeat icon for
+              your scheduled tasks across every screen.
+              <br />
+              <br />
+              <strong>iPhone (Safari):</strong> tap{" "}
+              <span style={kbd}>Share</span> &rarr;{" "}
+              <span style={kbd}>Add to Home Screen</span>.
+              <br />
+              <strong>Android (Chrome):</strong> tap{" "}
+              <span style={kbd}>&#8942;</span> &rarr;{" "}
+              <span style={kbd}>Install app</span>.
+            </>
+          }
+        />
+
+        <Hr style={hr} />
+
+        <Text style={philosophyLabel}>PHILOSOPHY</Text>
+        <Text style={philosophyHeading}>Everything is voice.</Text>
+        <Text style={philosophyBody}>
+          Typing and reading are friction. If you&apos;re running an agent
+          while walking, driving, or watching your kid &mdash; you
+          can&apos;t. So both directions are voice now: you talk to your
+          agent, and you listen to the result. The next two features are
+          how that works in practice.
+        </Text>
+
+        {/* ── Feature 2: Voice ── */}
+        <FeatureCard
+          badge="VOICE"
+          badgeColor="#2d5f8f"
+          title="Speak in, listen out"
+          body={
+            <>
+              <strong>Speak in:</strong> raw speech now goes through a
+              quick polish pass before it lands in your prompt &mdash;
+              cleaner punctuation, fixed names, no &ldquo;uh&rdquo;s.
+              Faster than re-recording.
+              <br />
+              <br />
+              <strong>Listen out:</strong> every assistant reply has a{" "}
+              <strong>Read-Aloud</strong> button. Tap it and Rebyte
+              summarizes the response and plays the summary as MP3 in your
+              system&apos;s native voice player &mdash; lock your phone,
+              keep walking, hear the answer.
+            </>
+          }
+        />
+
+        {/* ── Feature 3: Recap ── */}
+        <FeatureCard
+          badge="RECAP"
+          badgeColor="#ff6b4a"
+          title="The 12-word version, on tap"
+          body={
+            <>
+              Most replies now ship with a one-line summary chip pinned to
+              the top of the message. It&apos;s the answer in twelve words
+              &mdash; what changed, what shipped, what to do next. Tap the
+              chip&apos;s play button to hear it instead of read it.
+              <br />
+              <br />
+              The point: you can scroll a 30-message agent run and{" "}
+              <strong>read only the chips</strong>, or play them back to
+              back like a voice digest. Drill into the long version only
+              when the chip says it matters.
             </>
           }
         />
@@ -138,10 +167,10 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Agents you can listen to.</strong> A real cloud
-                  agent often runs for minutes. With Read-Aloud and recap
-                  chips, you can fire one off, lock your phone, and catch
-                  the result while walking.
+                  <strong>Run agents from anywhere.</strong> Cloud agents
+                  often take minutes. With voice in, voice out, and a
+                  home-screen icon, you fire one off and your phone
+                  delivers the result like a notification.
                 </Text>
               </td>
             </tr>
@@ -149,9 +178,9 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Skim long runs.</strong> A 200-line response with
-                  a 12-word recap is a 12-word response when you want it to
-                  be. Drill down only when it matters.
+                  <strong>Skim by ear.</strong> A long run becomes ten
+                  twelve-word chips. Read them or play them &mdash; you
+                  decide whether to commit to the full reply.
                 </Text>
               </td>
             </tr>
@@ -159,10 +188,9 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>The mobile PWA is first-class.</strong> Same task
+                  <strong>Mobile is first-class now.</strong> Same task
                   tracking, same notifications, same status icons as the
-                  desktop app &mdash; no second-class polling, no stale
-                  list.
+                  desktop app. The phone is no longer a degraded view.
                 </Text>
               </td>
             </tr>
@@ -172,8 +200,8 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         <Hr style={hr} />
 
         <Text style={paragraph}>
-          We wrote up a month of building Rebyte from a phone &mdash; what
-          worked, what didn&apos;t, why these three features mattered.
+          We wrote up a month of running Rebyte from a phone &mdash; what
+          worked, what didn&apos;t, why these three things mattered.
         </Text>
 
         <Button href="https://rebyte.ai/blog/a-month-of-building-rebyte-from-my-phone">
@@ -181,11 +209,11 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         </Button>
 
         <Text style={footNote}>
-          The mobile PWA install flow is on{" "}
+          Install instructions and the install button are at{" "}
           <a href="https://rebyte.ai/download" style={link}>
             rebyte.ai/download
           </a>
-          . Read-Aloud and Recap chips are live on every plan.
+          . Voice and Recap chips are live on every plan.
         </Text>
       </Section>
 
@@ -216,20 +244,46 @@ const sectionLabel: React.CSSProperties = {
   margin: "0 0 20px",
 };
 
+const philosophyLabel: React.CSSProperties = {
+  fontSize: "11px",
+  fontWeight: "700",
+  color: "#ff6b4a",
+  letterSpacing: "1.5px",
+  textTransform: "uppercase" as const,
+  margin: "0 0 8px",
+};
+
+const philosophyHeading: React.CSSProperties = {
+  fontSize: "22px",
+  fontWeight: "700",
+  color: "#1a1a1a",
+  margin: "0 0 14px",
+  lineHeight: "30px",
+};
+
+const philosophyBody: React.CSSProperties = {
+  fontSize: "16px",
+  lineHeight: "26px",
+  color: "#484848",
+  margin: "0 0 28px",
+};
+
 const hr: React.CSSProperties = {
   borderColor: "#e6ebf1",
   margin: "32px 0",
 };
 
-const inlineCode: React.CSSProperties = {
+const kbd: React.CSSProperties = {
+  display: "inline-block",
   background: "#f3f4f6",
-  border: "1px solid #e6ebf1",
+  border: "1px solid #d1d5db",
   borderRadius: "4px",
-  padding: "1px 6px",
+  padding: "1px 7px",
   fontFamily:
     "'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace",
   fontSize: "13px",
   color: "#1a1a1a",
+  fontWeight: "600",
 };
 
 const link: React.CSSProperties = {
