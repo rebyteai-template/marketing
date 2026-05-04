@@ -9,6 +9,7 @@ import ProductUpdate20260329 from "./product-update-2026-03-29/template";
 import ProductUpdate20260407 from "./product-update-2026-04-07/template";
 import ProductUpdate20260417 from "./product-update-2026-04-17/template";
 import ProductUpdate20260421 from "./product-update-2026-04-21/template";
+import ProductUpdate20260504 from "./product-update-2026-05-04/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -103,6 +104,13 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Weekly update — Bring Your Own Subscription or API Key, or use Rebyte credits with transparent per-task usage",
     subject: "Rebyte Now Can Use Your Own Key / Subscription",
+  },
+  "product-update-2026-05-04": {
+    channel: "email",
+    component: ProductUpdate20260504,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Weekly update — HD voice (OpenAI tts-1 + Read-Aloud), recap chips, and a real mobile PWA install flow",
+    subject: "Run Real Agents From Your Pocket",
   },
   "sms-welcome": {
     channel: "sms",
