@@ -51,7 +51,7 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
   return (
     <Wrapper preview="Install Rebyte as a real app on your phone, then run your company without ever opening a laptop again — voice in, voice out.">
       <Hero
-        title="Run Your Company From Your Pocket"
+        title="Control Your Agents From The Pocket"
         ctaText="Install Rebyte on Your Phone"
         ctaHref="https://rebyte.ai/download"
       />
