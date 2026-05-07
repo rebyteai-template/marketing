@@ -109,7 +109,7 @@ export const campaigns: Record<string, Campaign> = {
     channel: "email",
     component: ProductUpdate20260504,
     sampleProps: { name: "Jane", email: "jane@example.com" },
-    description: "Weekly update — Mobile PWA install + Everything-is-voice philosophy (voice in / voice out) + Recap chips on every reply",
+    description: "Weekly update — Phone as remote control: PWA install + mouth-in/ear-out voice + scheduled skills (the unseen half), tied to the 'A Month on My Phone' essay",
     subject: "Control Your Agents From The Pocket",
   },
   "sms-welcome": {

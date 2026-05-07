@@ -49,7 +49,7 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
   const displayName = lastName || "there";
 
   return (
-    <Wrapper preview="Install Rebyte as a real app on your phone, then run your company without ever opening a laptop again — voice in, voice out.">
+    <Wrapper preview="The phone is not a coding device — it's a remote control for a fleet of cloud agents. Three things shipped this week to make that real.">
       <Hero
         title="Control Your Agents From The Pocket"
         ctaText="Install Rebyte on Your Phone"
@@ -60,10 +60,11 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
       <Section style={section}>
         <Text style={paragraph}>Hey {displayName},</Text>
         <Text style={paragraph}>
-          Last month one of us ran most of Rebyte&apos;s company from a
-          phone &mdash; talking to agents on the way to lunch, listening to
-          results between meetings, never opening a laptop. Three changes
-          shipped this week to make that the default.
+          For the last thirty days one of us shipped Rebyte &mdash; every
+          service, every deploy, every production fix &mdash; without
+          opening a laptop. Not because phones are good for coding. Because
+          once the system on the other end is right, the phone is enough.
+          Three pieces of that system landed this week.
         </Text>
 
         <Hr style={hr} />
@@ -74,15 +75,16 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         <FeatureCard
           badge="MOBILE"
           badgeColor="#1a1a1a"
-          title="Install Rebyte as a real app, in 10 seconds"
+          title="Install the remote"
           body={
             <>
               The new <strong>Download page</strong> walks you through
-              Add-to-Home-Screen for iOS Safari and Android Chrome. Once
-              installed it&apos;s a real PWA: home-screen icon, full-screen
-              launch, push notifications, and &mdash; new this week &mdash;
-              live-polling status on every task list, plus a repeat icon for
-              your scheduled tasks across every screen.
+              Add-to-Home-Screen for iOS Safari and Android Chrome. The PWA
+              had to feel native enough that you stop thinking about the
+              difference: fast load, full-screen launch, push
+              notifications, live-polling task status, repeat icons on
+              every scheduled run. This is what turns your phone into a
+              real remote control for the fleet.
               <br />
               <br />
               <strong>iPhone (Safari):</strong> tap{" "}
@@ -99,54 +101,54 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         <Hr style={hr} />
 
         <Text style={philosophyLabel}>PHILOSOPHY</Text>
-        <Text style={philosophyHeading}>Everything is voice.</Text>
+        <Text style={philosophyHeading}>Mouth in, ear out.</Text>
         <Text style={philosophyBody}>
-          Typing and reading are friction. If you&apos;re running an agent
-          while walking, driving, or watching your kid &mdash; you
-          can&apos;t. So both directions are voice now: you talk to your
-          agent, and you listen to the result. The next two features are
-          how that works in practice.
+          On a phone, sustained typing is the wrong interaction. On a
+          phone, sustained reading is too. So the loop is voice on both
+          ends: you talk to the agent, and you listen to what it did.
+          Mid-walk, mid-drive, mid-coffee. No screen attention required.
         </Text>
 
         {/* ── Feature 2: Voice ── */}
         <FeatureCard
           badge="VOICE"
           badgeColor="#2d5f8f"
-          title="Speak in, listen out"
+          title="Type-less in, spoken back"
           body={
             <>
-              <strong>Speak in:</strong> raw speech now goes through a
-              quick polish pass before it lands in your prompt &mdash;
-              cleaner punctuation, fixed names, no &ldquo;uh&rdquo;s.
-              Faster than re-recording.
+              <strong>Type-less in:</strong> the composer assumes
+              you&apos;re dictating. Raw speech runs through a 2-second
+              polish pass before it lands as your prompt &mdash; cleaner
+              punctuation, fixed names, no &ldquo;uh&rdquo;s. Faster than
+              re-recording, more honest than guessing.
               <br />
               <br />
-              <strong>Listen out:</strong> every assistant reply has a{" "}
-              <strong>Read-Aloud</strong> button. Tap it and Rebyte
-              summarizes the response and plays the summary as MP3 in your
-              system&apos;s native voice player &mdash; lock your phone,
-              keep walking, hear the answer.
+              <strong>Spoken back:</strong> every assistant reply has a
+              Read-Aloud button. Tap it and Rebyte compresses the response
+              into a paragraph a TTS voice can speak in a way you can
+              actually understand &mdash; not a wall of code, but the
+              decision: ship, retry, ignore. Lock your phone, keep moving.
             </>
           }
         />
 
-        {/* ── Feature 3: Recap ── */}
+        {/* ── Feature 3: Scheduled skills ── */}
         <FeatureCard
-          badge="RECAP"
+          badge="SCHEDULE"
           badgeColor="#ff6b4a"
-          title="The 12-word version, on tap"
+          title="The unseen half"
           body={
             <>
-              Most replies now ship with a one-line summary chip pinned to
-              the top of the message. It&apos;s the answer in twelve words
-              &mdash; what changed, what shipped, what to do next. Tap the
-              chip&apos;s play button to hear it instead of read it.
-              <br />
-              <br />
-              The point: you can scroll a 30-message agent run and{" "}
-              <strong>read only the chips</strong>, or play them back to
-              back like a voice digest. Drill into the long version only
-              when the chip says it matters.
+              The visible half of running a product is the conversations.
+              The unseen half is everything that keeps running when you
+              say nothing &mdash; tests, checks, log scans, monitors. We
+              now run a wall of those as scheduled skills, each with one
+              job and its own clock: <strong>hourly golden tests against
+              production</strong>, <strong>log scans by error
+              signature</strong>, single-purpose monitors for stuck VMs,
+              certificate expiry, queue depth. By the time you open the
+              phone in the morning, the system has already decided what
+              actually deserves your attention.
             </>
           }
         />
@@ -167,10 +169,10 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Run agents from anywhere.</strong> Cloud agents
-                  often take minutes. With voice in, voice out, and a
-                  home-screen icon, you fire one off and your phone
-                  delivers the result like a notification.
+                  <strong>The phone replaces the dashboard.</strong> Once
+                  voice-in / voice-out works and the PWA feels native, you
+                  stop reaching for the laptop just to check on things.
+                  Walk and steer, instead of sit and stare.
                 </Text>
               </td>
             </tr>
@@ -178,9 +180,10 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Skim by ear.</strong> A long run becomes ten
-                  twelve-word chips. Read them or play them &mdash; you
-                  decide whether to commit to the full reply.
+                  <strong>Most of the work runs without you.</strong> A
+                  scheduled skill that runs every hour and reports only on
+                  change is worth more than a dashboard you have to
+                  remember to open.
                 </Text>
               </td>
             </tr>
@@ -188,9 +191,11 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Mobile is first-class now.</strong> Same task
-                  tracking, same notifications, same status icons as the
-                  desktop app. The phone is no longer a degraded view.
+                  <strong>You stay management, not engineering.</strong>{" "}
+                  Steering a system through summaries and read-backs
+                  instead of windows and terminals is direct enough to
+                  move quickly, abstract enough that you&apos;re not
+                  trapped in the machinery.
                 </Text>
               </td>
             </tr>
@@ -200,8 +205,10 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         <Hr style={hr} />
 
         <Text style={paragraph}>
-          We wrote up a month of running Rebyte from a phone &mdash; what
-          worked, what didn&apos;t, why these three things mattered.
+          The full story &mdash; the fleet of specialized cloud VMs, how
+          they share memory through a GitHub repo, what a sandbox can and
+          cannot do, why it works at all &mdash; is in this week&apos;s
+          essay.
         </Text>
 
         <Button href="https://rebyte.ai/blog/a-month-on-my-phone">
@@ -209,11 +216,11 @@ export default function ProductUpdate0504({ name }: ProductUpdateProps) {
         </Button>
 
         <Text style={footNote}>
-          Install instructions and the install button are at{" "}
+          Install the PWA at{" "}
           <a href="https://rebyte.ai/download" style={link}>
             rebyte.ai/download
           </a>
-          . Voice and Recap chips are live on every plan.
+          . Voice and scheduled skills are live on every plan.
         </Text>
       </Section>
 
