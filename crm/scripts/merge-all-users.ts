@@ -1,15 +1,21 @@
 #!/usr/bin/env npx tsx
 /**
- * Merge "All Existing Users" (group 13) + "All Users (Master)" (group 14)
- * into a single deduplicated group called "All Users".
+ * Merge all existing-user shards + the Clerk dynamic group into a single
+ * deduplicated group called "All Users". Use this one group for
+ * everyone-blasts (e.g. weekly product updates) instead of sending eight
+ * times.
  *
- * - Normalizes Gmail addresses (dots, +aliases, googlemail)
- * - INSERT OR IGNORE ensures no duplicates
- * - Safe to re-run: adds new members without duplicating
+ * - Sources: legacy CSV-imported existing-user shards (id 2-9, 500
+ *   emails each) + the Clerk dynamic group "All Clerk Users" (id 12).
+ *   Re-sync id 12 from Clerk before running so new signups land too.
+ * - Normalizes Gmail addresses (dots, +aliases, googlemail) so the same
+ *   user across CSV + Clerk doesn't double-count.
+ * - INSERT OR IGNORE on the (group_id, email) UNIQUE — no duplicates.
+ * - Safe to re-run: only adds emails that aren't already in "All Users".
  *
  * Usage:
- *   npx tsx emails/scripts/merge-all-users.ts
- *   npx tsx emails/scripts/merge-all-users.ts --dry-run
+ *   npx tsx crm/scripts/merge-all-users.ts
+ *   npx tsx crm/scripts/merge-all-users.ts --dry-run
  */
 
 import { createClient } from "@libsql/client";
@@ -27,7 +33,7 @@ function normalizeEmail(email: string): string {
   return email;
 }
 
-const SOURCE_GROUP_IDS = [13, 14]; // existing users + clerk master
+const SOURCE_GROUP_IDS = [2, 3, 4, 5, 6, 7, 8, 9, 12];
 const TARGET_GROUP_NAME = "All Users";
 
 async function main() {
