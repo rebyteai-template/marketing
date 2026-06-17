@@ -106,32 +106,33 @@ export async function POST(req: Request) {
   }
 
   const client = new postmark.ServerClient(apiKey);
-  const concurrency = 5;
   let sent = 0;
   let failed = 0;
 
-  for (let i = 0; i < recipients.length; i += concurrency) {
-    const batch = recipients.slice(i, i + concurrency);
-    const results = await Promise.allSettled(
-      batch.map(async (recipient) => {
-        const html = await render(
-          createElement(config.component, recipient)
-        );
-        return client.sendEmail({
-          From: from || "founder@rebyte.ai",
-          To: recipient.email,
-          Subject: subject || "Hello from Rebyte",
-          HtmlBody: html,
-          MessageStream: "broadcast",
-          TrackOpens: true,
-          // @ts-ignore
-          TrackLinks: "HtmlAndText",
-        });
-      })
+  // Send via Postmark's batch API. On Cloudflare Workers each HTTP call is a
+  // subrequest (capped ~1000/request) and adds latency, so sending one email
+  // per recipient stalls or times out on large groups. Batching at 500/call
+  // turns a 4,000-recipient blast into ~8 subrequests. Rendering is chunked
+  // too so we never hold thousands of rendered emails in memory at once.
+  const BATCH = 500;
+
+  for (let i = 0; i < recipients.length; i += BATCH) {
+    const slice = recipients.slice(i, i + BATCH);
+    const messages = await Promise.all(
+      slice.map(async (recipient) => ({
+        From: from || "founder@rebyte.ai",
+        To: recipient.email,
+        Subject: subject || "Hello from Rebyte",
+        HtmlBody: await render(createElement(config.component, recipient)),
+        MessageStream: "broadcast",
+        TrackOpens: true,
+        TrackLinks: "HtmlAndText",
+      }))
     );
 
-    for (const result of results) {
-      if (result.status === "fulfilled") {
+    const results = await client.sendEmailBatch(messages as any);
+    for (const r of results) {
+      if (r.ErrorCode === 0) {
         sent++;
       } else {
         failed++;
