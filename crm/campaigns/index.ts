@@ -11,6 +11,7 @@ import ProductUpdate20260417 from "./product-update-2026-04-17/template";
 import ProductUpdate20260421 from "./product-update-2026-04-21/template";
 import ProductUpdate20260504 from "./product-update-2026-05-04/template";
 import ProductUpdate20260616 from "./product-update-2026-06-16/template";
+import AgentManagementApi from "./agent-management-api/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -119,6 +120,13 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Product update — Agents become configurable coworkers: per-workspace system prompt + tools, MCP tool catalog, and ask-before-acting (blocked actions + ask_user_question). Plus Opus 4.8 + DeepSeek V4 Pro.",
     subject: "Your Agents Are Now Configurable Coworkers",
+  },
+  "agent-management-api": {
+    channel: "email",
+    component: AgentManagementApi,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Launch — Agent Management API: one rbk_ key runs a fleet of agents (POST /v1/tasks), steer/monitor via prompts + workspace reuse + status, integrate via signed webhooks + Files API. Positioned as agents-as-infrastructure.",
+    subject: "Your Agents Now Have an API",
   },
   "sms-welcome": {
     channel: "sms",
