@@ -10,6 +10,7 @@ import ProductUpdate20260407 from "./product-update-2026-04-07/template";
 import ProductUpdate20260417 from "./product-update-2026-04-17/template";
 import ProductUpdate20260421 from "./product-update-2026-04-21/template";
 import ProductUpdate20260504 from "./product-update-2026-05-04/template";
+import ProductUpdate20260616 from "./product-update-2026-06-16/template";
 
 interface EmailCampaign {
   channel: "email";
@@ -111,6 +112,13 @@ export const campaigns: Record<string, Campaign> = {
     sampleProps: { name: "Jane", email: "jane@example.com" },
     description: "Weekly update — Phone as remote control: PWA install + mouth-in/ear-out voice + scheduled skills (the unseen half), tied to the 'A Month on My Phone' essay",
     subject: "Control Your Agents From The Pocket",
+  },
+  "product-update-2026-06-16": {
+    channel: "email",
+    component: ProductUpdate20260616,
+    sampleProps: { name: "Jane", email: "jane@example.com" },
+    description: "Product update — Agents become configurable coworkers: per-workspace system prompt + tools, MCP tool catalog, and ask-before-acting (blocked actions + ask_user_question). Plus Opus 4.8 + DeepSeek V4 Pro.",
+    subject: "Your Agents Are Now Configurable Coworkers",
   },
   "sms-welcome": {
     channel: "sms",
