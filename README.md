@@ -47,6 +47,14 @@ pnpm send     # CLI 发送（参考 send.ts）
 - launchd label：`rebyte.marketing.crm`，`KeepAlive=true`（重启自动起）
 - 部署套路见 shared-memories `skills/add-growth-tool`，redeploy 走 `git pull && pnpm build && launchctl kickstart -k gui/$(id -u homo)/rebyte.marketing.crm`
 
+**Cloudflare 版（生产）**：同一份代码也跑在 Cloudflare Workers + D1 上，公网域名 `https://crm.impo.ai`（Cloudflare Access 限 `@rebyte.ai` 邮箱登录）。改完代码（比如新增 campaign）后一键 redeploy：
+
+```bash
+cd crm && ./deploy.sh
+```
+
+`deploy.sh` 只构建 + 部署当前工作区代码（worker `rebyte-emails`），不动 D1 数据 / secrets / Access 配置；需要 `~/cloudflare.env`。详见 memory `crm-cloudflare-deploy`。
+
 Postmark API key 在 `CLAUDE.md`（私仓 OK，但别对外）。
 
 ## Remotion 视频（顶层 + my-remotion-demo/）
