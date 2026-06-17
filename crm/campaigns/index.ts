@@ -125,8 +125,8 @@ export const campaigns: Record<string, Campaign> = {
     channel: "email",
     component: AgentManagementApi,
     sampleProps: { name: "Jane", email: "jane@example.com" },
-    description: "Launch — Agent Management API: one rbk_ key runs a fleet of agents (POST /v1/tasks), steer/monitor via prompts + workspace reuse + status, integrate via signed webhooks + Files API. Positioned as agents-as-infrastructure.",
-    subject: "Your Agents Now Have an API",
+    description: "Launch — Agent Management API: one rbk_ key runs a fleet of agents (POST /v1/tasks), steer/monitor via prompts + workspace reuse + status, integrate via signed webhooks + Files API. A model-agnostic drop-in for Claude Code / single-vendor managed-agent APIs (run Claude Code, Codex, Gemini, opencode).",
+    subject: "One API for Claude Code, Codex, and Any Agent",
   },
   "sms-welcome": {
     channel: "sms",

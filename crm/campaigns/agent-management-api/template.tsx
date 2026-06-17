@@ -63,7 +63,10 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
           Everything you do in Rebyte by hand &mdash; spin up an agent,
           give it a repo and a set of skills, watch it work &mdash; is now
           a REST API. One key, and your own code can run a whole fleet of
-          agents, each on its own isolated cloud computer.
+          agents, each on its own isolated cloud computer. Think of it as a
+          drop-in replacement for running Claude Code yourself, or for a
+          single-vendor managed-agent API &mdash; without being locked to
+          one model.
         </Text>
 
         <Hr style={hr} />
@@ -98,7 +101,26 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
           }
         />
 
-        {/* ── Card 2: Control ── */}
+        {/* ── Card 2: Model-agnostic (the differentiator) ── */}
+        <FeatureCard
+          badge="MODEL-AGNOSTIC"
+          badgeColor="#ff6b4a"
+          title="Claude Code, Codex — your call"
+          body={
+            <>
+              This is the one thing a single-vendor agent API can&apos;t
+              give you: choose the harness per task. Run{" "}
+              <strong>Claude Code</strong>, the{" "}
+              <strong>Codex SDK</strong>, <strong>Gemini</strong>, or{" "}
+              <strong>opencode</strong> across a dozen open models &mdash;
+              all behind the same endpoint and the same key. Switch agents
+              by changing one field (<span style={kbd}>executor</span>),
+              not your integration.
+            </>
+          }
+        />
+
+        {/* ── Card 3: Control ── */}
         <FeatureCard
           badge="CONTROL"
           badgeColor="#2d5f8f"
@@ -117,10 +139,10 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
           }
         />
 
-        {/* ── Card 3: Integrate ── */}
+        {/* ── Card 4: Integrate ── */}
         <FeatureCard
           badge="INTEGRATE"
-          badgeColor="#ff6b4a"
+          badgeColor="#1a1a1a"
           title="Get notified, not blocked"
           body={
             <>
@@ -170,10 +192,10 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Pick the brain per task.</strong> Claude, Gemini,
-                  Codex, or opencode &mdash; plus any skill (deep research,
-                  PDF, data analysis) &mdash; chosen per task, not per
-                  account.
+                  <strong>Drop-in, not rebuild.</strong> If you already
+                  script Claude Code or a managed-agent API, you&apos;re a
+                  few endpoints away &mdash; same mental model, more models,
+                  no lock-in to a single vendor.
                 </Text>
               </td>
             </tr>
@@ -192,7 +214,8 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
         <Button href="https://rebyte.ai/docs">Read the API Docs</Button>
 
         <Text style={footNote}>
-          Available on every plan. Get your key at{" "}
+          Available on every plan. Executors: Claude Code, Codex, Gemini,
+          opencode. Get your key at{" "}
           <a href="https://app.rebyte.ai/settings/api-keys" style={link}>
             app.rebyte.ai/settings/api-keys
           </a>
