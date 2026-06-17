@@ -63,10 +63,20 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
           Everything you do in Rebyte by hand &mdash; spin up an agent,
           give it a repo and a set of skills, watch it work &mdash; is now
           a REST API. One key, and your own code can run a whole fleet of
-          agents, each on its own isolated cloud computer. Think of it as a
-          drop-in replacement for running Claude Code yourself, or for a
-          single-vendor managed-agent API &mdash; without being locked to
-          one model.
+          agents, each on its own isolated cloud computer. It&apos;s a
+          managed agent API &mdash; Rebyte runs the agent loop, the
+          sandbox, and the tools; you just drive it over HTTP. The same
+          shape as a model vendor&apos;s managed-agent API, with the one
+          difference that matters: you&apos;re not locked to their model.
+          Run Claude Code, the Codex SDK, Gemini, or opencode inside the
+          same managed environment.
+        </Text>
+
+        <Text style={docsLine}>
+          Full API reference:{" "}
+          <a href="https://rebyte.ai/docs" style={link}>
+            rebyte.ai/docs
+          </a>
         </Text>
 
         <Hr style={hr} />
@@ -192,10 +202,10 @@ export default function AgentManagementApi({ name }: ProductUpdateProps) {
               <td style={bulletIconTd}>&#10003;</td>
               <td style={bulletTextTd}>
                 <Text style={bulletText}>
-                  <strong>Drop-in, not rebuild.</strong> If you already
-                  script Claude Code or a managed-agent API, you&apos;re a
-                  few endpoints away &mdash; same mental model, more models,
-                  no lock-in to a single vendor.
+                  <strong>Managed, not locked in.</strong> You get the
+                  hosted agent and sandbox a managed-agent API gives you
+                  &mdash; but the agent inside is yours to choose, and
+                  swapping it is one parameter, not a migration.
                 </Text>
               </td>
             </tr>
@@ -294,6 +304,14 @@ const kbd: React.CSSProperties = {
 const link: React.CSSProperties = {
   color: "#2d5f8f",
   textDecoration: "underline",
+};
+
+const docsLine: React.CSSProperties = {
+  fontSize: "14px",
+  lineHeight: "22px",
+  color: "#484848",
+  margin: "0 0 8px",
+  fontWeight: "600",
 };
 
 /* ── Feature cards ── */
