@@ -51,3 +51,6 @@ data.db-wal
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# wrangler local dev state
+.wrangler/

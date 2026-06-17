@@ -5,10 +5,14 @@
     "dev": "next dev --port 10000",
     "build": "next build",
     "start": "next start --port 10000",
-    "send": "tsx send.ts"
+    "send": "tsx send.ts",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "cf:deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "@libsql/client": "^0.17.0",
+    "@opennextjs/cloudflare": "^1.19.11",
     "@react-email/components": "^0.0.31",
     "@react-email/render": "^1.0.4",
     "csv-parse": "^5.6.0",
@@ -16,6 +20,9 @@
     "postmark": "^4.0.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "workerd", "sharp"]
   },
   "devDependencies": {
     "@opennextjs/aws": "^3.9.16",

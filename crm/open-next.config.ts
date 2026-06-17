@@ -1,16 +1,3 @@
-import type { OpenNextConfig } from "@opennextjs/aws/types/open-next";
+import { defineCloudflareConfig } from "@opennextjs/cloudflare";
 
-const config: OpenNextConfig = {
-  buildCommand: "npx next build",
-  default: {
-    override: {
-      wrapper: "aws-lambda",
-      converter: "aws-apigw-v2",
-      incrementalCache: "dummy",
-      tagCache: "dummy",
-      queue: "dummy",
-    },
-  },
-};
-
-export default config;
+export default defineCloudflareConfig();
